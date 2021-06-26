@@ -1,0 +1,29 @@
+.navbar {
+    background-color: #0D1431;
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+}
+
+.menu {
+    display: flex;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    padding: 50px;
+    font-size: 18px;
+}
+
+.item:hover {
+    color: #4347E2;
+}
