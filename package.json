@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "isomorphic-unfetch": "^3.1.0",
     "mongoose": "^5.12.15",
     "next": "11.0.1",
     "react": "17.0.2",

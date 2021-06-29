@@ -15,7 +15,7 @@ export default function Home() {
 
         <main className={styles.main}>
           <h1 className={styles.title}>
-            Share and Explore <br /> Investment Portolios
+            Share and Rate <br /> Investment Portolios
           </h1>
 
           <p className={styles.description}>

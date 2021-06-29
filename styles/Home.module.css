@@ -87,6 +87,7 @@
 .card:active {
   color: #fff;
   border-color: #fff;
+  cursor: pointer;
 }
 
 .card h2 {
