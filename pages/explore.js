@@ -7,7 +7,7 @@ const explore = ({ portfolios }) => {
         {
             portfolios.map(portfolio => {
                 return (
-                    <Link href={`/${portfolios._id}`}>
+                    <Link href={`/${portfolio._id}`}>
                         <div className={styles.card}>
                             <div key={portfolio._id}>
                                     <h2>{portfolio.title}</h2>

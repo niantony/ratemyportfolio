@@ -1,15 +1,16 @@
-import router from 'next/router'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 
-const NewPortfolio = () =>  {
-    const [form, setForm] = useState({ title: '', description: '' })
+const EditPortfolio = ({ portfolio }) =>  {
+    const [form, setForm] = useState({ title: portfolio.title, description: portfolio.description })
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [errors, setErrors] = useState({})
+    const router = useRouter()
 
     useEffect(() => {
         if (isSubmitting) {
             if (Object.keys(errors).length === 0) {
-                createPortfolio();
+                updatePortfolio();
                 router.push('/explore')
             }
             else {
@@ -18,10 +19,10 @@ const NewPortfolio = () =>  {
         }
     }, [errors])
 
-    const createPortfolio = async () => {
+    const updatePortfolio = async () => {
         try {
-            const res = await fetch('http://localhost:3000/api/portfolios', {
-                method: 'POST',
+            const res = await fetch(`http://localhost:3000/api/portfolios/${router.query.id}`, {
+                method: 'PUT',
                 headers: {
                     "Accept": "application/json",
                     "Content-Type": "application/json"
@@ -65,16 +66,23 @@ const NewPortfolio = () =>  {
             <form onSubmit={handleSubmit}>
                 <label>
                     Title:
-                    <input type="text" name="title" placeholder="Title..." onChange={handleChange}/>
+                    <input type="text" name="title" placeholder="Title..." value={form.title} onChange={handleChange}/>
                 </label>
                 <label>
                     Description:
-                    <input type="text" name="description" placeholder="Description..." onChange={handleChange}/>
+                    <input type="text" name="description" placeholder="Description..." value={form.description} onChange={handleChange}/>
                 </label>
-                <input type="submit" value="Submit"/>
+                <input type="submit" value="Update"/>
             </form>
         </div>
     )
 }
 
-export default NewPortfolio
+EditPortfolio.getInitialProps = async ({ query: { id } }) => {
+    const res = await fetch(`http://localhost:3000/api/portfolios/${id}`)
+    const { data } = await res.json()
+
+    return { portfolio: data }
+}
+
+export default EditPortfolio

@@ -16,6 +16,11 @@ function Navbar() {
                     </Link>
                 </li>
                 <li className={styles.item}>
+                    <Link href='/new'>
+                        Create
+                    </Link>
+                </li>
+                <li className={styles.item}>
                     <Link href='/about'>
                         About Us
                     </Link>
