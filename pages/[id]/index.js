@@ -44,11 +44,11 @@ const Portfolio = ({ portfolio }) => {
     )
 }
 
- Portfolio.getInitialProps = async ({ query: { id } }) => {
-     const res = await fetch(`http://localhost:3000/api/portfolios/${id}`)
-     const { data } = await res.json()
-     
-     return { portfolio: data }
- }
+Portfolio.getInitialProps = async ({ query: { id } }) => {
+    const res = await fetch(`http://localhost:3000/api/portfolios/${id}`);
+    const { data } = await res.json();
+
+    return { portfolio: data }
+}
 
  export default Portfolio
