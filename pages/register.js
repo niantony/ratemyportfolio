@@ -20,7 +20,7 @@ const NewUser = () =>  {
 
     const createUser = async () => {
         try {
-            const res = await fetch('http://localhost:3000/api/user', {
+            const res = await fetch('http://localhost:3000/api/user/register', {
                 method: 'POST',
                 headers: {
                     "Accept": "application/json",

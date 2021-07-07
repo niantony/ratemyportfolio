@@ -30,7 +30,7 @@ export default async (req, res) => {
                     email: req.body.email,
                     password: hashPassword
                 });
-                res.status(201).json({ success: true, data: user })
+                res.status(201).json({ success: true, userId: user._id })
             } catch (error) {
                 res.status(400).json({ success: false });
             }
