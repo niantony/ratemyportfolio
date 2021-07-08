@@ -1,5 +1,6 @@
 import dbConnect from '../../../utils/dbConnect';
 import User from '../../../models/User';
+const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const { loginValidation } = require('../../validation')
 
@@ -19,12 +20,15 @@ export default async (req, res) => {
             const user = await User.findOne({ email: req.body.email })
                 if (!user) return res.status(400).send('Email or password is incorrect')
 
-            // Password is correct
+            // Checking is password is correct
             const validPass = await bcrypt.compare(req.body.password, user.password)
                 if (!validPass) return res.status(400).send('Email or password is incorrect')
 
-            res.status(200).json({ success: true, message: 'Logged in!' })
+            // Create and assign a token
+            const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET )
+            res.setHeader('auth-token', "test")
 
+            res.status(200).json({ success: true, message: 'Logged in!', token: token })
             break;
         default:
             res.status(400).json({ success: false });

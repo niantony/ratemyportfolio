@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
+const { Schema } = mongoose;
+mongoose.Promise = global.Promise
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -25,4 +27,4 @@ const userSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.models.User || mongoose.model('User', userSchema)

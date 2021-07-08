@@ -25,12 +25,12 @@ export default async (req, res) => {
 
             // Creating user
             try {
-                const user = await User.create({
+                const new_user = await User.create({
                     name: req.body.name,
                     email: req.body.email,
                     password: hashPassword
                 });
-                res.status(201).json({ success: true, userId: user._id })
+                res.status(201).json({ success: true, userId: new_user._id })
             } catch (error) {
                 res.status(400).json({ success: false });
             }
