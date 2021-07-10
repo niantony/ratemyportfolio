@@ -1,4 +1,4 @@
-import dbConnect from '../../../utils/dbConnect';
+import dbConnect from '../../../middleware/dbConnect';
 import User from '../../../models/User';
 const bcrypt = require('bcryptjs')
 const { registerValidation } = require('../../validation')
@@ -16,6 +16,9 @@ export default async (req, res) => {
                 if (error) return res.status(400).json({ success: false, message: error.details[0].message})
 
             // Checking if user is already in database
+            const nameExists = await User.findOne({ name: req.body.name })
+                if (nameExists) return res.status(400).send('Name already exists')
+
             const emailExists = await User.findOne({ email: req.body.email })
                 if (emailExists) return res.status(400).send('Email already exists')
 

@@ -1,7 +1,8 @@
-import dbConnect from '../../../utils/dbConnect';
+import dbConnect from '../../../middleware/dbConnect';
 import User from '../../../models/User';
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
+import cookie from 'cookie'
 const { loginValidation } = require('../../validation')
 
 dbConnect();
@@ -26,7 +27,12 @@ export default async (req, res) => {
 
             // Create and assign a token
             const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET )
-            res.setHeader('auth-token', "test")
+            res.setHeader('Set-Cookie', cookie.serialize('auth', token, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV !== 'development',
+                sameSite: 'strict',
+                path: '/'
+            }))
 
             res.status(200).json({ success: true, message: 'Logged in!', token: token })
             break;

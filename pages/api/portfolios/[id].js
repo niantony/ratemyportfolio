@@ -1,4 +1,4 @@
-import dbConnect from '../../../utils/dbConnect';
+import dbConnect from '../../../middleware/dbConnect';
 import Portfolio from '../../../models/Portfolio';
 
 dbConnect();
@@ -17,7 +17,6 @@ export default async (req, res) => {
                 if(!portfolio) {
                     return res.status(400).json({ success: false, message: "Portfolio does not exist" })
                 }
-                console.log(portfolio)
                 res.status(200).json({ success: true, data: portfolio });
             } catch (error) {
                 res.status(400).json({ success: false })

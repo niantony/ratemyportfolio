@@ -38,8 +38,8 @@ const Portfolio = ({ portfolio }) => {
                 <h2>{portfolio.title}</h2>
                 <p>{portfolio.description}</p>
             </div>
-            <button onClick={handleDelete}>Delete</button>
-            <button onClick={handleUpdate}>Edit</button>
+            {/* <button onClick={handleDelete}>Delete</button>
+            <button onClick={handleUpdate}>Edit</button> */}
         </>
     )
 }

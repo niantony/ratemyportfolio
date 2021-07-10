@@ -1,5 +1,21 @@
+.page_container {
+  margin-top: 7vh;
+  height: 93vh;
+  background-color: #0D1431;
+}
+
+.title_container {
+  background-color: #0D1431;
+  text-align: center;
+}
+
+.title {
+  line-height: 1.15;
+  font-size: 5rem;
+  color: #fff
+}
+
 .card_container {
-    background-color: #0D1431;
     display: flex;
     width: 100%;
     justify-content: center;
