@@ -1,17 +1,18 @@
+import { set } from 'js-cookie'
 import router from 'next/router'
 import { useState, useEffect } from 'react'
-import { verify } from 'jsonwebtoken'
 
-const NewPortfolio = () =>  {
+const Login = () =>  {
     const [form, setForm] = useState({ title: '', description: '' })
     const [isSubmitting, setIsSubmitting] = useState(false)
+    const [loginSuccess, setLoginSuccess] = useState(false)
     const [errors, setErrors] = useState({})
 
     useEffect(() => {
         if (isSubmitting) {
             if (Object.keys(errors).length === 0) {
-                createPortfolio();
-                router.push('/explore')
+                userLogin();
+                // router.push('/')
             }
             else {
                 setIsSubmitting(false);
@@ -19,16 +20,20 @@ const NewPortfolio = () =>  {
         }
     }, [errors])
 
-    const createPortfolio = async () => {
+    const userLogin = async () => {
         try {
-            const res = await fetch('http://localhost:3000/api/portfolios', {
+            const res = await fetch('http://localhost:3000/api/user/login', {
                 method: 'POST',
                 headers: {
                     "Accept": "application/json",
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(form)
+                body: JSON.stringify({
+                    email: form.email,
+                    password: form.password
+                })
             })
+            if (res.status === 200) setLoginSuccess(true)
         } catch (error) {
             console.log(error)
         }
@@ -51,26 +56,26 @@ const NewPortfolio = () =>  {
     const validate = () => {
         let err = {};
 
-        if (!form.title) {
-            err.title = 'Title is required';
+        if (!form.email) {
+            err.email = 'Email is required';
         }
-        if (!form.description) {
-            err.description = 'Description is required';
+        if (!form.password) {
+            err.password = 'Password is required';
         }
         return err;
     }
 
     return (
         <div className="form-container">
-            <h1>Create Portfolio</h1>
+            <h1>Login</h1>
             <form onSubmit={handleSubmit}>
                 <label>
-                    Title:
-                    <input type="text" name="title" placeholder="Title..." onChange={handleChange}/>
+                    Email:
+                    <input type="text" name="email" placeholder="Email..." onChange={handleChange}/>
                 </label>
                 <label>
-                    Description:
-                    <input type="text" name="description" placeholder="Description..." onChange={handleChange}/>
+                    Password:
+                    <input type="text" name="password" placeholder="Password..." onChange={handleChange}/>
                 </label>
                 <input type="submit" value="Submit"/>
             </form>
@@ -78,4 +83,4 @@ const NewPortfolio = () =>  {
     )
 }
 
-export default NewPortfolio
+export default Login

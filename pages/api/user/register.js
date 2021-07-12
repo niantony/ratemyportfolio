@@ -1,7 +1,7 @@
 import dbConnect from '../../../middleware/dbConnect';
 import User from '../../../models/User';
 const bcrypt = require('bcryptjs')
-const { registerValidation } = require('../../validation')
+const { registerValidation } = require('../../../middleware/validation')
 
 dbConnect();
 

@@ -3,7 +3,7 @@ import User from '../../../models/User';
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 import cookie from 'cookie'
-const { loginValidation } = require('../../validation')
+const { loginValidation } = require('../../../middleware/validation')
 
 dbConnect();
 
