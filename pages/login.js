@@ -3,7 +3,7 @@ import router from 'next/router'
 import { useState, useEffect } from 'react'
 
 const Login = () =>  {
-    const [form, setForm] = useState({ title: '', description: '' })
+    const [form, setForm] = useState()
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [loginSuccess, setLoginSuccess] = useState(false)
     const [errors, setErrors] = useState({})
@@ -28,10 +28,7 @@ const Login = () =>  {
                     "Accept": "application/json",
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({
-                    email: form.email,
-                    password: form.password
-                })
+                body: JSON.stringify(form)
             })
             if (res.status === 200) setLoginSuccess(true)
         } catch (error) {
