@@ -1,12 +1,14 @@
 import { set } from 'js-cookie'
 import router from 'next/router'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { AuthContext } from '../context/AuthContext'
 
 const Login = () =>  {
     const [form, setForm] = useState()
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [loginSuccess, setLoginSuccess] = useState(false)
     const [errors, setErrors] = useState({})
+    const { isFetching, error, dispatch } = useContext(AuthContext)
 
     useEffect(() => {
         if (isSubmitting) {
@@ -72,7 +74,7 @@ const Login = () =>  {
                 </label>
                 <label>
                     Password:
-                    <input type="text" name="password" placeholder="Password..." onChange={handleChange}/>
+                    <input type="password" name="password" placeholder="Password..." onChange={handleChange}/>
                 </label>
                 <input type="submit" value="Submit"/>
             </form>

@@ -2,7 +2,7 @@ import router from 'next/router'
 import { useState, useEffect } from 'react'
 import { verify } from 'jsonwebtoken'
 
-const NewPortfolio = () =>  {
+const NewPortfolio = async (req, res) =>  {
     const [form, setForm] = useState({ title: '', description: '' })
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [errors, setErrors] = useState({})
@@ -60,22 +60,26 @@ const NewPortfolio = () =>  {
         return err;
     }
 
-    return (
-        <div className="form-container">
-            <h1>Create Portfolio</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Title:
-                    <input type="text" name="title" placeholder="Title..." onChange={handleChange}/>
-                </label>
-                <label>
-                    Description:
-                    <input type="text" name="description" placeholder="Description..." onChange={handleChange}/>
-                </label>
-                <input type="submit" value="Submit"/>
-            </form>
-        </div>
-    )
+    await verify(req.cookies.auth, process.env.TOKEN_SECRET, async function(err, decoded) {
+        if (!err && decoded) {
+            return (
+                <div className="form-container">
+                    <h1>Create Portfolio</h1>
+                    <form onSubmit={handleSubmit}>
+                        <label>
+                            Title:
+                            <input type="text" name="title" placeholder="Title..." onChange={handleChange}/>
+                        </label>
+                        <label>
+                            Description:
+                            <input type="text" name="description" placeholder="Description..." onChange={handleChange}/>
+                        </label>
+                        <input type="submit" value="Submit"/>
+                    </form>
+                </div>
+            )
+        }
+    })
 }
 
 export default NewPortfolio
