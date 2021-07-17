@@ -1,7 +1,30 @@
 import styles from '../styles/Explore.module.css'
 import Link from 'next/link'
+import firebase from '../firebase/clientApp'
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { useState, useEffect } from 'react';
 
-const explore = ({ portfolios }) => {
+
+const explore = () => {
+
+    // const [user, loading, error] = useAuthState(firebase.auth());
+
+    const [portfolios, setPortfolios] = useState([])
+
+    useEffect(() => {
+        firebase.firestore()
+          .collection('portfolios')
+          .get()
+          .then(snap => {
+            const portfolios = snap.docs.map(doc => ({
+              id: doc.id,
+              ...doc.data()
+            }));
+            setPortfolios(portfolios);
+          });
+      }, []);
+
     return (
         <div className={styles.page_container}>
             <div className={styles.title_container}>
@@ -28,13 +51,6 @@ const explore = ({ portfolios }) => {
         </div>
         
     )
-}
-
-explore.getInitialProps = async () => {
-    const res = await fetch('http://localhost:3000/api/portfolios');
-    const { data } = await res.json();
-
-    return { portfolios: data }
 }
 
 export default explore

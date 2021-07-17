@@ -34,10 +34,10 @@ const Portfolio = ({ portfolio }) => {
 
     return (
         <>
-            <div className={styles.card}>
+            {/* <div className={styles.card}>
                 <h2>{portfolio.title}</h2>
                 <p>{portfolio.description}</p>
-            </div>
+            </div> */}
             {/* <button onClick={handleDelete}>Delete</button>
             <button onClick={handleUpdate}>Edit</button> */}
         </>

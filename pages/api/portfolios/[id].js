@@ -1,7 +1,7 @@
-import dbConnect from '../../../middleware/dbConnect';
-import Portfolio from '../../../models/Portfolio';
+// import dbConnect from '../../../middleware/dbConnect';
+// import Portfolio from '../../../models/Portfolio';
 
-dbConnect();
+// dbConnect();
 
 export default async (req, res) => {
     const {

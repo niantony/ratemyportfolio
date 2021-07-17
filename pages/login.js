@@ -1,85 +1,111 @@
-import { set } from 'js-cookie'
-import router from 'next/router'
-import { useState, useEffect, useContext } from 'react'
-import { AuthContext } from '../context/AuthContext'
+import React, { useState } from "react";
+import Link from "next/link";
+import firebaseClient from "../firebase/firebaseClient";
+import firebase from "firebase/app";
+import "firebase/auth";
+import {
+  Box,
+  Flex,
+  Input,
+  FormControl,
+  FormLabel,
+  FormHelperText,
+  FormErrorMessage,
+  Stack,
+  Button,
+  Heading,
+  useToast,
+} from "@chakra-ui/react";
 
-const Login = () =>  {
-    const [form, setForm] = useState()
-    const [isSubmitting, setIsSubmitting] = useState(false)
-    const [loginSuccess, setLoginSuccess] = useState(false)
-    const [errors, setErrors] = useState({})
-    const { isFetching, error, dispatch } = useContext(AuthContext)
-
-    useEffect(() => {
-        if (isSubmitting) {
-            if (Object.keys(errors).length === 0) {
-                userLogin();
-                // router.push('/')
-            }
-            else {
-                setIsSubmitting(false);
-            }
-        }
-    }, [errors])
-
-    const userLogin = async () => {
-        try {
-            const res = await fetch('http://localhost:3000/api/user/login', {
-                method: 'POST',
-                headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(form)
-            })
-            if (res.status === 200) setLoginSuccess(true)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        let errs = validate();
-        setErrors(errs);
-        setIsSubmitting(true);
-    }
-
-    const handleChange = (e) => {
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value
-        })
-    }
-
-    const validate = () => {
-        let err = {};
-
-        if (!form.email) {
-            err.email = 'Email is required';
-        }
-        if (!form.password) {
-            err.password = 'Password is required';
-        }
-        return err;
-    }
-
-    return (
-        <div className="form-container">
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Email:
-                    <input type="text" name="email" placeholder="Email..." onChange={handleChange}/>
-                </label>
-                <label>
-                    Password:
-                    <input type="password" name="password" placeholder="Password..." onChange={handleChange}/>
-                </label>
-                <input type="submit" value="Submit"/>
-            </form>
-        </div>
-    )
+export default function Login({ props }) {
+  firebaseClient();
+  const toast = useToast();
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  return (
+    <Flex>
+      <Box w={500} p={4} my={12} mx="auto">
+        <Heading textAlign="center" as="h2">
+          Login
+        </Heading>
+        <FormControl isRequired>
+          <FormLabel htmlFor="email">Email address</FormLabel>
+          <Input
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            id="emailAddress"
+            value={email}
+            aria-describedby="email-helper-text"
+          />
+          <FormHelperText id="email-helper-text">
+            We'll never share your email.
+          </FormHelperText>
+        </FormControl>
+        <FormControl isRequired>
+          <FormLabel htmlFor="password">Password</FormLabel>
+          <Input
+            onChange={(e) => setPass(e.target.value)}
+            type="password"
+            id="pass"
+            value={pass}
+            aria-describedby="password-helper-text"
+          />
+        </FormControl>
+        <Stack justify="center" mt={6} isInline spacing={10}>
+          <Button
+            minWidth="40%"
+            variant="solid"
+            variantColor="blue"
+            isDisabled={email === "" || pass === ""}
+            onClick={async () => {
+              await firebase
+                .auth()
+                .createUserWithEmailAndPassword(email, pass)
+                .then(function (firebaseUser) {
+                  window.location.href = "/";
+                })
+                .catch(function (error) {
+                  const message = error.message;
+                  toast({
+                    title: "An error occurred.",
+                    description: "Email is already taken",
+                    status: "error",
+                    duration: 9000,
+                    isClosable: true,
+                  });
+                });
+            }}
+          >
+            Create account
+          </Button>
+          <Button
+            minWidth="40%"
+            variant="solid"
+            variantColor="green"
+            isDisabled={email === "" || pass === ""}
+            onClick={async () => {
+              await firebase
+                .auth()
+                .signInWithEmailAndPassword(email, pass)
+                .then(function (firebaseUser) {
+                  window.location.href = "/";
+                })
+                .catch(function (error) {
+                  const message = error.message;
+                  toast({
+                    title: "An error occurred.",
+                    description: "The email or password is incorrect",
+                    status: "error",
+                    duration: 9000,
+                    isClosable: true,
+                  });
+                });
+            }}
+          >
+            Log in
+          </Button>
+        </Stack>
+      </Box>
+    </Flex>
+  );
 }
-
-export default Login

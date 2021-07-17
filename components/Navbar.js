@@ -16,7 +16,7 @@ function Navbar() {
                     </Link>
                 </li>
                 <li className={styles.item}>
-                    <Link href='/new'>
+                    <Link href='/create'>
                         Create
                     </Link>
                 </li>
