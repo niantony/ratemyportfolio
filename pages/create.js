@@ -1,11 +1,24 @@
 import React, { useState } from 'react';
 import firebase from '../firebase/clientApp'
 import 'firebase/firestore'
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function CreatePortfolio() {
+  const [user, loading, error] = useAuthState(firebase.auth())
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [notification, setNotification] = useState('');
+  const [stocks, setStocks] = useState([])
+  const [input, setInput] = useState('')
+
+  const saveInput = (e) => {
+    console.log(e.target.value)
+    setInput(e.target.value)
+  }
+
+  const addStock = () => {
+    stocks.push(input)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,12 +26,17 @@ export default function CreatePortfolio() {
     .firestore()
       .collection('portfolios')
       .add({
+        createdBy: user.displayName,
+        userId: user.uid,
         title: title,
         description: description,
+        stocks: stocks,
+        date: Date.now()
       });
 
     setTitle('');
     setDescription('');
+    setStocks([]);
     setNotification('Portfolio created');
 
     setTimeout(() => {
@@ -40,6 +58,11 @@ export default function CreatePortfolio() {
           Description<br />
           <textarea value={description} 
            onChange={({target}) => setDescription(target.value)} />
+        </div>
+        <div>
+          Add Stock<br />
+          <input type="text" onChange={saveInput}/>
+          <button onClick={addStock}>Add Stock</button>
         </div>
         <button type="submit">Save</button>
       </form>
