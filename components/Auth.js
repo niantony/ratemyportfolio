@@ -10,6 +10,10 @@ const uiConfig = {
             displayName: true
         },
         {
+            provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            displayName: true
+        },
+        {
             provider: firebase.auth.GithubAuthProvider.PROVIDER_ID,
             displayName: true
         }

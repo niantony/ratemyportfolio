@@ -7,7 +7,7 @@ const Layout = ({ children }) => (
             <title>RateMyPortfolio</title>
             <meta name="description" content="Stock Market Portfolio Sharing" />
         </Head>
-        <Navbar />
+        {/* <Navbar /> */}
         {children}
     </>
 )

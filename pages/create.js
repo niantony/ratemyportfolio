@@ -12,7 +12,6 @@ export default function CreatePortfolio() {
   const [input, setInput] = useState('')
 
   const saveInput = (e) => {
-    console.log(e.target.value)
     setInput(e.target.value)
   }
 
@@ -48,6 +47,11 @@ export default function CreatePortfolio() {
     <div>
       <h2>Create Portfolio</h2>
       {notification}
+      <div>
+          Add Stock<br />
+          <input type="text" onChange={saveInput}/>
+          <button onClick={addStock}>Add Stock</button>
+      </div>
       <form onSubmit={handleSubmit}>
         <div>
           Title<br />
@@ -58,11 +62,6 @@ export default function CreatePortfolio() {
           Description<br />
           <textarea value={description} 
            onChange={({target}) => setDescription(target.value)} />
-        </div>
-        <div>
-          Add Stock<br />
-          <input type="text" onChange={saveInput}/>
-          <button onClick={addStock}>Add Stock</button>
         </div>
         <button type="submit">Save</button>
       </form>
