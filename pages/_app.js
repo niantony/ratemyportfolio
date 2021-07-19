@@ -1,11 +1,27 @@
 import '../styles/globals.css'
 import Layout from '../components/Layout'
-import Navbar from '../components/Navbar'
+import firebase from '../firebase/clientApp'
+import { useAuthState } from "react-firebase-hooks/auth";
+import Navbar from '../components/Navbar';
+import AuthNavbar from '../components/AuthNavbar';
 
 function MyApp({ Component, pageProps }) {
-  return (
+  const [user, loading, error] = useAuthState(firebase.auth())
+
+  if (user) {
+    return (
+      <>
+        <Layout/>
+        <AuthNavbar />
+        <Component {...pageProps} />
+      </>
+    )
+  }
+
+  else return (
     <>
-      <Layout />
+      <Layout/>
+      <Navbar />
       <Component {...pageProps} />
     </>
   )

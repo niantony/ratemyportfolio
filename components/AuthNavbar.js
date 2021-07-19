@@ -1,7 +1,7 @@
 import styles from '../styles/Navbar.module.css'
 import Link from 'next/link'
 
-function Navbar() {
+function AuthNavbar() {
     return (
         <div className={styles.navbar}>
             <ul className={styles.menu}>
@@ -16,18 +16,18 @@ function Navbar() {
                     </Link>
                 </li>
                 <li className={styles.item}>
+                    <Link href='/create'>
+                        Create
+                    </Link>
+                </li>
+                <li className={styles.item}>
                     <Link href='/about'>
                         About Us
                     </Link>
                 </li>
                 <li className={styles.item}>
                     <Link href='/auth'>
-                        Sign Up
-                    </Link>
-                </li>
-                <li className={styles.item}>
-                    <Link href='/auth'>
-                        Login
+                        Profile
                     </Link>
                 </li>
             </ul>
@@ -35,4 +35,4 @@ function Navbar() {
     )
 }
 
-export default Navbar
+export default AuthNavbar

@@ -1,6 +1,6 @@
-import styles from '../styles/Explore.module.css'
+import styles from '../../styles/Explore.module.css'
 import Link from 'next/link'
-import firebase from '../firebase/clientApp'
+import firebase from '../../firebase/clientApp'
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { useState, useEffect } from 'react';
@@ -36,9 +36,9 @@ const explore = () => {
                 {
                     portfolios.map(portfolio => {
                         return (
-                            <Link href={`/${portfolio._id}`}>
+                            <Link href={`/explore/${portfolio.id}`}>
                                 <div className={styles.card}>
-                                    <div key={portfolio._id}>
+                                    <div key={portfolio.id}>
                                             <h2>{portfolio.title}</h2>
                                             <p>{portfolio.description}</p>
                                         </div>
