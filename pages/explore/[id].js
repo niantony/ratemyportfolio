@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import firebase from '../../firebase/clientApp'
 import Link from 'next/link'
+import styles from '../../styles/Portfolio.module.css'
 
 const Portfolio = (props) => {
     const [portfolio, setPortfolio] = useState(null)
@@ -22,7 +23,7 @@ const Portfolio = (props) => {
     }
 
     return (
-        <div>
+        <div className={styles.portfolio_container}>
           <h2>{portfolio.title}</h2>
           <p>
             {portfolio.description}

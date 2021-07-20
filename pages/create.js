@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import firebase from '../firebase/clientApp'
 import 'firebase/firestore'
 import { useAuthState } from "react-firebase-hooks/auth";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function CreatePortfolio() {
   const [user, loading, error] = useAuthState(firebase.auth())
@@ -20,27 +21,42 @@ export default function CreatePortfolio() {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    firebase
-    .firestore()
-      .collection('portfolios')
-      .add({
-        createdBy: user.displayName,
-        userId: user.uid,
-        title: title,
-        description: description,
-        stocks: stocks,
-        date: Date.now()
-      });
+    if (stocks.length >= 5) {
+      e.preventDefault();
+      const uuid = uuidv4()
 
-    setTitle('');
-    setDescription('');
-    setStocks([]);
-    setNotification('Portfolio created');
+      // Adds new Portfolio to Firestore
+      firebase
+        .firestore()
+          .collection('portfolios')
+          .doc(uuid)
+          .set({
+            createdBy: user.displayName,
+            userId: user.uid,
+            title: title,
+            description: description,
+            stocks: stocks,
+            date: firebase.firestore.FieldValue.serverTimestamp(),
+            portfolioId: uuid
+        });
+      
+      // Adds Portfolio ID to user
+      firebase.firestore().collection('users').doc(user.uid).update({
+        portfolios: firebase.firestore.FieldValue.arrayUnion(uuid)
+      })
 
-    setTimeout(() => {
-      setNotification('')
-    }, 2000)
+      setTitle('');
+      setDescription('');
+      setStocks([]);
+      setNotification('Portfolio created');
+
+      setTimeout(() => {
+        setNotification('')
+      }, 2000)
+    } else {
+      e.preventDefault()
+      setNotification('Need at least 5 stocks');
+    }
   }
 
   return (
