@@ -60,11 +60,12 @@ const Portfolio = (props) => {
             <PieChart 
               data={stockList}
               lineWidth={65}
-              label={({ dataEntry }) => dataEntry.value + "%"}
+              label={({ dataEntry }) => dataEntry.title + " " + dataEntry.value + "%"}
               labelStyle={(index) => ({
                 fill: "#fff",
-                fontSize: '5px',
+                fontSize: '4px',
                 fontFamily: 'sans-serif',
+                fontWeight: "bold"
               })}
               labelPosition={65}
               lengthAngle={360} 
@@ -72,7 +73,7 @@ const Portfolio = (props) => {
               style={{ height: '500px' }}
             />
             <Link href="/explore">
-              <a>Back</a>
+              <a style={{ color: "#fff" }}>Back</a>
             </Link>
           </div>
         </div>

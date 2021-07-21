@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import firebase from '../firebase/clientApp'
 import 'firebase/firestore'
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -22,52 +22,75 @@ export default function CreatePortfolio() {
     setPercent(parseInt(e.target.value))
   }
 
-  const addStock = () => {
-    stocks.push({
-      name: input,
-      percent: percent
-    })
-    setInput("")
-    setPercent(0)
-    console.log(stocks)
+  const addStock = (e) => {
+    if (percent < 100 && percent > 0) {
+      stocks.push({
+        name: input,
+        percent: percent
+      })
+      setInput("")
+      setPercent(0)
+    } 
+    else if (percent < 1) {
+      e.preventDefault()
+      setNotification("Percentage needs to be at least 1")
+    }
+    else if (percent > 100) {
+      e.preventDefault()
+      setNotification("Percentage needs to be less than 100")
+    }
   }
 
   const handleSubmit = (e) => {
-    if (stocks.length >= 5) {
-      e.preventDefault();
-      const uuid = uuidv4()
-
-      // Adds new Portfolio to Firestore
-      firebase
-        .firestore()
-          .collection('portfolios')
-          .doc(uuid)
-          .set({
-            createdBy: user.displayName,
-            userId: user.uid,
-            title: title,
-            description: description,
-            stocks: stocks,
-            date: firebase.firestore.FieldValue.serverTimestamp(),
-            portfolioId: uuid
-        });
-      
-      // Adds Portfolio ID to user
-      firebase.firestore().collection('users').doc(user.uid).update({
-        portfolios: firebase.firestore.FieldValue.arrayUnion(uuid)
-      })
-
-      setTitle('');
-      setDescription('');
-      setStocks([]);
-      setNotification('Portfolio created');
-
-      setTimeout(() => {
-        setNotification('')
-      }, 2000)
-    } else {
+    var total = 0;
+    stocks.map(stock => {
+      total = total + stock.percent
+    })
+    if (total === 100) {
+      if (stocks.length >= 5) {
+        e.preventDefault();
+        const uuid = uuidv4()
+  
+        // Adds new Portfolio to Firestore
+        firebase
+          .firestore()
+            .collection('portfolios')
+            .doc(uuid)
+            .set({
+              createdBy: user.displayName,
+              userId: user.uid,
+              title: title,
+              description: description,
+              stocks: stocks,
+              date: firebase.firestore.FieldValue.serverTimestamp(),
+              portfolioId: uuid
+          });
+        
+        // Adds Portfolio ID to user
+        firebase.firestore().collection('users').doc(user.uid).update({
+          portfolios: firebase.firestore.FieldValue.arrayUnion(uuid)
+        })
+  
+        setTitle('');
+        setDescription('');
+        setStocks([]);
+        setNotification('Portfolio created');
+  
+        setTimeout(() => {
+          setNotification('')
+        }, 2000)
+      } else {
+        e.preventDefault()
+        setNotification('Need at least 5 stocks');
+      }
+    }
+    else if (total < 100) {
       e.preventDefault()
-      setNotification('Need at least 5 stocks');
+      setNotification("Total percent is less than 100. Add more stocks or increase percentages.")
+    }
+    else {
+      e.preventDefault()
+      setNotification("Total is above 100. Please remove stocks or lower percentages.")
     }
   }
 
