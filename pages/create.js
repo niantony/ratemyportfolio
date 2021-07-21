@@ -3,6 +3,7 @@ import firebase from '../firebase/clientApp'
 import 'firebase/firestore'
 import { useAuthState } from "react-firebase-hooks/auth";
 import { v4 as uuidv4 } from 'uuid';
+import styles from '../styles/Create.module.css'
 
 export default function CreatePortfolio() {
   const [user, loading, error] = useAuthState(firebase.auth())
@@ -11,13 +12,24 @@ export default function CreatePortfolio() {
   const [notification, setNotification] = useState('');
   const [stocks, setStocks] = useState([])
   const [input, setInput] = useState('')
+  const [percent, setPercent] = useState(0)
 
   const saveInput = (e) => {
     setInput(e.target.value)
   }
 
+  const savePercent = (e) => {
+    setPercent(parseInt(e.target.value))
+  }
+
   const addStock = () => {
-    stocks.push(input)
+    stocks.push({
+      name: input,
+      percent: percent
+    })
+    setInput("")
+    setPercent(0)
+    console.log(stocks)
   }
 
   const handleSubmit = (e) => {
@@ -65,7 +77,10 @@ export default function CreatePortfolio() {
       {notification}
       <div>
           Add Stock<br />
-          <input type="text" onChange={saveInput}/>
+          <input type="text" onChange={saveInput} value={input} placeholder="Stock Ticker or Name..."/>
+          <br/>
+          <input type="number" onChange={savePercent} value={percent} placeholder="Percent..."/>
+          <br/>
           <button onClick={addStock}>Add Stock</button>
       </div>
       <form onSubmit={handleSubmit}>
@@ -81,6 +96,17 @@ export default function CreatePortfolio() {
         </div>
         <button type="submit">Save</button>
       </form>
+      <ul>
+        {stocks.map(stock => {
+            return (
+              <li key={stock.name}>
+                {stock.name} 
+                {stock.percent}
+              </li>
+            )  
+          }
+        )}
+      </ul>
     </div>
   )
 }

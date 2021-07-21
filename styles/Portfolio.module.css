@@ -1,5 +1,29 @@
-.portfolio_container {
-    margin-top: 13vh;
-    padding-left: 8vh;
+.container {
+    margin-top: 7vh;
+    height: 93vh;
+    background-color: #0D1431;
+}
+
+.info_container {
+    padding-top: 6vh;
+    padding-left: 13vh;
+}
+
+.title {
+    color: #fff;
+    font-size: 60px;
+    /* text-decoration: underline solid #fff 6px; */
+}
+
+.subtitle {
+    margin-top: -3vh;
+    color: #6F748B;
+    font-weight: bolder;
+    font-size: 25px;
+}
+
+.description {
+    color: #fff;
+    font-weight: 500px;
 }
 

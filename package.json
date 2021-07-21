@@ -30,10 +30,12 @@
     "next-firebase-auth": "^0.13.2",
     "next.js": "^1.0.3",
     "nookies": "^2.5.2",
+    "randomcolor": "^0.6.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-firebase-hooks": "^3.0.4",
     "react-firebaseui": "^5.0.2",
+    "react-minimal-pie-chart": "^8.2.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
