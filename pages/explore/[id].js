@@ -9,8 +9,9 @@ const Portfolio = (props) => {
     const [portfolio, setPortfolio] = useState(null)
     var stockList = []
     const color = randomColor({
-      count: 200,
-      hue: 'blue'
+      count: 50,
+      hue: 'blue',
+      luminosity: 'bright'
    });
 
     useEffect(() => {
@@ -58,6 +59,17 @@ const Portfolio = (props) => {
 
             <PieChart 
               data={stockList}
+              lineWidth={65}
+              label={({ dataEntry }) => dataEntry.value + "%"}
+              labelStyle={(index) => ({
+                fill: "#fff",
+                fontSize: '5px',
+                fontFamily: 'sans-serif',
+              })}
+              labelPosition={65}
+              lengthAngle={360} 
+              animate
+              style={{ height: '500px' }}
             />
             <Link href="/explore">
               <a>Back</a>
