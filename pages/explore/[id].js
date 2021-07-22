@@ -3,8 +3,10 @@ import firebase from '../../firebase/clientApp'
 import styles from '../../styles/Portfolio.module.css'
 import { PieChart } from 'react-minimal-pie-chart';
 import randomColor from 'randomcolor';
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const Portfolio = (props) => {
+    const [user, loading, error] = useAuthState(firebase.auth())
     const [portfolio, setPortfolio] = useState(null)
     var stockList = []
     const color = randomColor({
@@ -36,6 +38,32 @@ const Portfolio = (props) => {
         )
     }
 
+    const upvote = () => {
+      firebase.firestore().collection('portfolios').doc(props.id).update({
+        upvotes: firebase.firestore.FieldValue.arrayUnion(user.uid)
+      })
+      try {
+        firebase.firestore().collection('portfolios').doc(props.id).update({
+          downvotes: firebase.firestore.FieldValue.arrayRemove(user.uid)
+        })
+      } catch (error) {
+        return
+      }   
+    }
+
+    const downvote = () => {
+      firebase.firestore().collection('portfolios').doc(props.id).update({
+        downvotes: firebase.firestore.FieldValue.arrayUnion(user.uid)
+      })
+      try {
+        firebase.firestore().collection('portfolios').doc(props.id).update({
+          upvotes: firebase.firestore.FieldValue.arrayRemove(user.uid)
+        })
+      } catch (error) {
+        return
+      }
+    }
+
       return (
         <div className={styles.container}>
           <div className={styles.row}>
@@ -47,10 +75,10 @@ const Portfolio = (props) => {
                   {portfolio.description}
                 </p>
                 <div className={styles.vote_container}>
-                  <div className={styles.vote_yes}>
+                  <div className={styles.vote_yes} onClick={upvote}>
                     <p>⬆</p>
                   </div>
-                  <div className={styles.vote_no}>
+                  <div className={styles.vote_no} onClick={downvote}>
                     <p>⬇</p>
                   </div>
                 </div>

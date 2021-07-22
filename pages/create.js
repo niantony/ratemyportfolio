@@ -62,6 +62,8 @@ export default function CreatePortfolio() {
               title: title,
               description: description,
               stocks: stocks,
+              upvotes: [],
+              downvotes: [],
               date: firebase.firestore.FieldValue.serverTimestamp(),
               portfolioId: uuid
           });
