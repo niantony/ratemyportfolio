@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import firebase from '../../firebase/clientApp'
-import Link from 'next/link'
 import styles from '../../styles/Portfolio.module.css'
 import { PieChart } from 'react-minimal-pie-chart';
 import randomColor from 'randomcolor';
@@ -72,9 +71,6 @@ const Portfolio = (props) => {
               animate
               style={{ height: '500px' }}
             />
-            <Link href="/explore">
-              <a style={{ color: "#fff" }}>Back</a>
-            </Link>
           </div>
         </div>
       )

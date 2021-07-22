@@ -34,6 +34,8 @@
     border-radius: 20px;
     transition: color 0.15s ease, border-color 0.15s ease;
     width: 30%;
+    height: 190px;
+    overflow: hidden;
   }
   
   .card:hover,
@@ -49,9 +51,17 @@
     font-size: 1.5rem;
   }
   
+  .card h4 {
+    margin: 0;
+    margin-top: -10px;
+    margin-bottom: 6px;
+    color: #808080;
+  }
+
   .card p {
     margin: 0;
     font-size: 1.25rem;
     line-height: 1.5;
-    color: #0D1431
+    color: #0D1431;
+    overflow: hidden;
   }

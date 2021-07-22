@@ -40,6 +40,7 @@ const explore = () => {
                                 <div className={styles.card}>
                                     <div key={portfolio.id}>
                                             <h2>{portfolio.title}</h2>
+                                            <h4>{portfolio.stocks[0].name.toUpperCase()}, {portfolio.stocks[1].name.toUpperCase()}, {portfolio.stocks[2].name.toUpperCase()}...</h4>
                                             <p>{portfolio.description}</p>
                                         </div>
                                     </div>
