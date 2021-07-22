@@ -4,15 +4,29 @@
     background-color: #0D1431;
 }
 
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col {
+    flex: 1;
+}
+
 .info_container {
-    padding-top: 6vh;
-    padding-left: 13vh;
+    padding-top: 12vh;
+    padding-left: 30vh;
+}
+
+.pie_container {
+    padding-top: 12vh;
+    padding-right: 30vh;
 }
 
 .title {
     color: #fff;
-    font-size: 60px;
-    /* text-decoration: underline solid #fff 6px; */
+    font-size: 65px;
 }
 
 .subtitle {
@@ -25,5 +39,46 @@
 .description {
     color: #fff;
     font-weight: 500px;
+    font-size: 20px;
+    padding-bottom: 30px;
+}
+
+.vote_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    margin-left: 25%;
+    margin-right: 25%;
+    height: 80px;
+}
+
+.vote_yes {
+    background-color: #30bd06;
+    border-radius: 40px 0 0 40px;
+    height: 100%;
+    flex: 1;
+    font-size: 25px;
+    text-align: center;
+    color: white;
+}
+
+.vote_yes:hover {
+    cursor: pointer;
+}
+
+.vote_no {
+    background-color: #de2828;
+    border-radius: 0 40px 40px 0;
+    height: 100%;
+    flex: 1;
+    font-size: 25px;
+    text-align: center;
+    color: white;
+}
+
+.vote_no:hover {
+    cursor: pointer;
 }
 
