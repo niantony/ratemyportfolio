@@ -75,9 +75,16 @@ export default function CreatePortfolio() {
               portfolioId: uuid
           });
         
-        // Adds Portfolio ID to user
+        // Adds Portfolio to user db
         firebase.firestore().collection('users').doc(user.uid).update({
-          portfolios: firebase.firestore.FieldValue.arrayUnion(uuid)
+          portfolios: firebase.firestore.FieldValue.arrayUnion({
+              createdBy: user.displayName,
+              userId: user.uid,
+              title: title,
+              description: description,
+              stocks: stocks,
+              portfolioId: uuid
+          })
         })
   
         setTitle('');

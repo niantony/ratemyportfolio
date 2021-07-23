@@ -2,9 +2,13 @@ import firebase from '../firebase/clientApp'
 import Auth from '../components/Auth'
 import { useAuthState } from "react-firebase-hooks/auth";
 import styles from '../styles/Auth.module.css'
+import { useEffect, useState } from 'react';
+import Link from 'next/link'
 
 export default function SignInScreen() {
     const [user, loading, error] = useAuthState(firebase.auth())
+    const [userPortfolios, setUserPortfolios] = useState([])
+    const [getData, setGetData] = useState(true)
 
     const signOut = () => {
         firebase.auth().signOut().then(() => {
@@ -15,12 +19,74 @@ export default function SignInScreen() {
     }
 
     if (user) {
+        if(getData) {
+            try {
+                firebase.firestore()
+                    .collection('users')
+                    .doc(user.uid)
+                    .get()
+                    .then(result => {
+                        setUserPortfolios(result.data().portfolios)
+                        console.log(userPortfolios)
+                    })
+                setGetData(false)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        
         return (
             <div className={styles.auth_container}>
-                <h1>{user.displayName}</h1>
-                <h2>{user.email}</h2>
-                <h2>{user.uid}</h2>
-                <button onClick={signOut}>Sign-out</button>
+                <img
+                    src={user.photoURL} 
+                    alt="Google profile pic"
+                    className={styles.img}
+                />
+                <div className={styles.tag}>
+                    <p>Member</p>
+                </div>
+                <h1 className={styles.display_name}>{user.displayName}</h1>
+                <p className={styles.email}>{user.email}</p>
+
+                <div>
+                    <h2 className={styles.heading}>My Portfolios</h2>
+                    <div className={styles.line} />
+                </div>
+                
+                <div className={styles.card_container}>
+                    {userPortfolios.length > 0 ? <>{userPortfolios.map(portfolio => {
+                        return (
+                            <div className={styles.card}>
+                                <div key={portfolio.portfolioId}>
+                                    <h2>{portfolio.title}</h2>
+                                    <h4>{portfolio.stocks[0].name.toUpperCase()}, {portfolio.stocks[1].name.toUpperCase()}, {portfolio.stocks[2].name.toUpperCase()}...</h4>
+                                    <p>{portfolio.description}</p>
+                                    <div className={styles.button_container}>
+                                        <Link href={`/explore/${portfolio.portfolioId}`}>
+                                            <button className={styles.view_button}>View</button>
+                                        </Link>
+                                        <button className={styles.delete_button} onClick={() => {
+                                            firebase.firestore().collection('users').doc(user.uid).update({
+                                                portfolios: firebase.firestore.FieldValue.arrayRemove(portfolio)
+                                            })
+
+                                            firebase.firestore().collection('portfolios').doc(portfolio.portfolioId)
+                                                .delete().then(() => {
+                                                    setGetData(true)
+                                                })
+                                        }}>Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })}</> :
+                    <>
+                        You have no portfolios
+                    </>}
+                    
+                </div>
+
+                <button className={styles.signout_button} onClick={signOut}>Sign-out</button>
             </div>
         )
     }

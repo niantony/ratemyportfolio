@@ -1,15 +1,10 @@
 import styles from '../../styles/Explore.module.css'
 import Link from 'next/link'
 import firebase from '../../firebase/clientApp'
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useCollection } from "react-firebase-hooks/firestore";
 import { useState, useEffect } from 'react';
 
 
 const explore = () => {
-
-    // const [user, loading, error] = useAuthState(firebase.auth());
-
     const [portfolios, setPortfolios] = useState([])
 
     useEffect(() => {
