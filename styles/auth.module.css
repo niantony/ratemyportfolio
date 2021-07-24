@@ -60,6 +60,7 @@
   }
 
 .card {
+    position: relative;
     margin: 1rem;
     padding: 2rem;
     text-align: left;
@@ -108,30 +109,56 @@
 
 .button_container {
     display: flex;
-    flex-direction: column;
-    margin-top: -90px;
+    position: absolute;
+    top: 0;
+    margin-top: 50px;
+    margin-left: 65px;
     justify-content: center;
     align-items: center;
 }
 
 .view_button {
-    visibility: hidden;
-    width: 90%;
-    height: 50px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: .1s ease-in-out;
+  visibility: hidden;
+  border-radius: 15px;
+  border: 2px solid white;
+  width: 90px;
+  height: 90px;
+  margin-right: 10px;
+  background-color: #4A90E2;
+}
+
+.view_button:hover {
+  cursor: pointer;
 }
 
 .delete_button {
-    visibility: hidden;
-    width: 90%;
-    height: 50px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: .1s ease-in-out;
-    background-color: #de2828;
+  visibility: hidden;
+  border-radius: 15px;
+  border: 2px solid white;
+  width: 90px;
+  height: 90px;
+  margin-left: 10px;
+  background-color: #FA314A;
+}
+
+.delete_button:hover {
+  cursor: pointer;
+}
+
+.view_button img {
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 50px;
+  height: 50px;
+  filter: brightness(0) invert(1);
+}
+
+.delete_button img {
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 50px;
+  height: 50px;
+  filter: brightness(0) invert(1);
 }
 
 .card:hover .view_button {
@@ -157,4 +184,28 @@
 
 .signout_button:hover {
     cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+  .card {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .card {
+    width: 40%;
+  }
+  .title {
+    font-size: 80px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: 80%;
+  }
+  .title {
+    font-size: 55px
+  }
 }

@@ -58,23 +58,32 @@ export default function SignInScreen() {
                         return (
                             <div className={styles.card}>
                                 <div key={portfolio.portfolioId}>
-                                    <h2>{portfolio.title}</h2>
-                                    <h4>{portfolio.stocks[0].name.toUpperCase()}, {portfolio.stocks[1].name.toUpperCase()}, {portfolio.stocks[2].name.toUpperCase()}...</h4>
-                                    <p>{portfolio.description}</p>
+                                    <div>
+                                        <h2>{portfolio.title}</h2>
+                                    </div>
+                                    <div>
+                                        <h4>{portfolio.stocks[0].name.toUpperCase()}, {portfolio.stocks[1].name.toUpperCase()}, {portfolio.stocks[2].name.toUpperCase()}...</h4>
+                                    </div>
+                                    <div>
+                                        <p>{portfolio.description}</p>
+                                    </div>
                                     <div className={styles.button_container}>
-                                        <Link href={`/explore/${portfolio.portfolioId}`}>
-                                            <button className={styles.view_button}>View</button>
-                                        </Link>
-                                        <button className={styles.delete_button} onClick={() => {
+                                        <div className={styles.view_button}>
+                                            <Link href={`/explore/${portfolio.portfolioId}`}>
+                                                <img src="https://img.icons8.com/ios-glyphs/90/4a90e2/visible--v1.png"/>
+                                            </Link>
+                                        </div>
+                                        <div className={styles.delete_button} onClick={() => {
                                             firebase.firestore().collection('users').doc(user.uid).update({
                                                 portfolios: firebase.firestore.FieldValue.arrayRemove(portfolio)
                                             })
-
                                             firebase.firestore().collection('portfolios').doc(portfolio.portfolioId)
                                                 .delete().then(() => {
                                                     setGetData(true)
                                                 })
-                                        }}>Delete</button>
+                                        }}>
+                                            <img src="https://img.icons8.com/ios/100/fa314a/delete-trash.png"/>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
