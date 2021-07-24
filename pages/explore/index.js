@@ -2,6 +2,7 @@ import styles from '../../styles/Explore.module.css'
 import Link from 'next/link'
 import firebase from '../../firebase/clientApp'
 import { useState, useEffect } from 'react';
+import candlestick from '../../images/candlestick.png'
 
 
 const explore = () => {
@@ -34,11 +35,25 @@ const explore = () => {
                             <Link href={`/explore/${portfolio.id}`}>
                                 <div className={styles.card}>
                                     <div key={portfolio.id}>
+                                        <div>
                                             <h2>{portfolio.title}</h2>
+                                        </div>
+                                        <div>
                                             <h4>{portfolio.stocks[0].name.toUpperCase()}, {portfolio.stocks[1].name.toUpperCase()}, {portfolio.stocks[2].name.toUpperCase()}...</h4>
+                                        </div>
+                                        <div>
                                             <p>{portfolio.description}</p>
                                         </div>
+                                        <div className={styles.votes}>
+                                            <p>{portfolio.upvotes.length}</p>
+                                            <img className={styles.image} src="https://img.icons8.com/material-rounded/96/000000/thick-arrow-pointing-up.png"/>
+                                        </div>
+                                        <div className={styles.profile_container}>
+                                            <img src={portfolio.photoUrl} alt="Profile pic"/>
+                                            <p>{portfolio.createdBy}</p>
+                                        </div>
                                     </div>
+                                </div>
                             </Link>
                         )
                     })

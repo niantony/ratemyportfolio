@@ -72,7 +72,8 @@ export default function CreatePortfolio() {
               upvotes: [],
               downvotes: [],
               date: firebase.firestore.FieldValue.serverTimestamp(),
-              portfolioId: uuid
+              portfolioId: uuid,
+              photoUrl: user.photoURL
           });
         
         // Adds Portfolio to user db
