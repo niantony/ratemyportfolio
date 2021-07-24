@@ -17,7 +17,7 @@ function Navbar() {
                 </li>
                 <li className={styles.item}>
                     <Link href='/about'>
-                        About Us
+                        About
                     </Link>
                 </li>
                 <li className={styles.item}>

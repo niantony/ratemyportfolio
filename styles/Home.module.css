@@ -1,13 +1,17 @@
+.home_container {
+  height: 100vh;
+  background-color: #0D1431;
+}
+
 .container {
   background-color: #0D1431;
   color: white;
-  min-height: 85vh;
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 85vh;
+  height: 100vh;
 }
 
 .main {
@@ -34,7 +38,7 @@
 .description {
   line-height: 1.5;
   font-size: 1.5rem;
-  color: #6F748B
+  color: #6c6e75
 }
 
 .button {
@@ -61,6 +65,7 @@
 }
 
 .card_container {
+  margin: 0;
   background-color: #0D1431;
   display: flex;
   width: 100%;
@@ -107,9 +112,38 @@
   margin-left: 0.5rem;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
+@media screen and (max-width: 1024px) {
+  .card {
+    width: 80%;
+  }
+  .card_container {
+    margin-top: -10px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .card {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .title {
+    font-size: 60px;
+  }
+  .description {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .title {
+    font-size: 60px;
+  }
+  .description {
+    font-size: 20px;
+  }
+  .container {
+    height: 800px;
   }
 }

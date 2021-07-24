@@ -10,6 +10,7 @@
 }
 
 .title {
+  padding-top: 40px;
   line-height: 1.15;
   font-size: 5rem;
   color: #fff
@@ -48,6 +49,7 @@
   
   .card h2 {
     margin: 0 0 1rem 0;
+    margin-top: -7px;
     font-size: 1.5rem;
   }
   
@@ -65,3 +67,21 @@
     color: #0D1431;
     overflow: hidden;
   }
+
+@media screen and (max-width: 960px) {
+  .card {
+    width: 40%;
+  }
+  .title {
+    font-size: 80px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: 80%;
+  }
+  .title {
+    font-size: 55px
+  }
+}
