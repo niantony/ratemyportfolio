@@ -133,7 +133,7 @@ export default function CreatePortfolio() {
               </form>
   
               <div className={styles.add_container}>
-                <h2>ADDING STOCKS</h2>
+                <h2>ADD A STOCK</h2>
                 <h4>STOCK TICKER/NAME</h4>
                 <input className={styles.input} type="text" onChange={saveInput} value={input} placeholder="Stock Ticker or Name..."/>
                 <h4>PERCENTAGE</h4>

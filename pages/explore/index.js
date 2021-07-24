@@ -2,8 +2,6 @@ import styles from '../../styles/Explore.module.css'
 import Link from 'next/link'
 import firebase from '../../firebase/clientApp'
 import { useState, useEffect } from 'react';
-import candlestick from '../../images/candlestick.png'
-
 
 const explore = () => {
     const [portfolios, setPortfolios] = useState([])
