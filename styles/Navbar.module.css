@@ -15,6 +15,11 @@
     display: flex;
 }
 
+.menu_icon {
+    color: white;
+    visibility: hidden;
+}
+
 .item {
     display: flex;
     align-items: center;
@@ -26,4 +31,110 @@
 
 .item:hover {
     color: #4347E2;
+}
+
+.item_profile {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 90px;
+    border: 1.5px solid #4375e2;
+    background-color: #4375e2;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    right: 0;
+    top: 0;
+    margin-top: 17px;
+    margin-right: 40vh;
+    border-radius: 20px;
+}
+
+.item_profile:hover {
+    cursor: pointer;
+}
+
+.item_login {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 90px;
+    border: 1.5px solid #4375e2;
+    background-color: #4375e2;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    right: 0;
+    top: 0;
+    margin-top: 17px;
+    margin-right: 40vh;
+    border-radius: 20px;
+}
+
+.item_login:hover {
+    cursor: pointer;
+}
+
+.item_signup {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 90px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+    right: 0;
+    top: 0;
+    margin-top: 17px;
+    margin-right: 50vh;
+    border-radius: 20px;
+}
+
+.item_signup:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 960px) {
+    .menu {
+        visibility: hidden;
+    }
+    .navbar {
+        height: 9vh;
+        transition: all .5s ease;
+    }
+    .menu_active {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 93vh;
+        position: absolute;
+        top: 7vh;
+        opacity: 1;
+        left: 0;
+        background: #0D1431;
+        transition: all .5s ease;
+        z-index: 1;
+    }
+    .nav-link {
+        text-align: center;
+        padding: 2rem;
+        width: 100%;
+        display: table;
+    }
+    .menu_icon {
+        visibility: visible;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100%, 60%);
+        font-size: 2rem;
+        cursor: pointer;
+    }
 }

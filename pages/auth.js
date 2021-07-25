@@ -27,7 +27,6 @@ export default function SignInScreen() {
                     .get()
                     .then(result => {
                         setUserPortfolios(result.data().portfolios)
-                        console.log(userPortfolios)
                     })
                 setGetData(false)
             } catch (error) {
@@ -81,7 +80,7 @@ export default function SignInScreen() {
                                                 .delete().then(() => {
                                                     setGetData(true)
                                                 })
-                                        }}>
+                                            }}>
                                             <img src="https://img.icons8.com/ios/100/fa314a/delete-trash.png"/>
                                         </div>
                                     </div>

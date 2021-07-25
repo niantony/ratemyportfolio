@@ -4,10 +4,14 @@ import styles from '../../styles/Portfolio.module.css'
 import { PieChart } from 'react-minimal-pie-chart';
 import randomColor from 'randomcolor';
 import { useAuthState } from "react-firebase-hooks/auth";
+import { VscLoading } from 'react-icons/vsc'
 
 const Portfolio = (props) => {
     const [user, loading, error] = useAuthState(firebase.auth())
     const [portfolio, setPortfolio] = useState(null)
+    const [upvoted, setUpvoted] = useState(false)
+    const [downvoted, setDownvoted] = useState(false)
+
     var stockList = []
     const color = randomColor({
       count: 50,
@@ -27,14 +31,11 @@ const Portfolio = (props) => {
 
     if (!portfolio) {
         return(
-          <div>
-            <h2>Loading...</h2>
-            <h2>Loading...</h2>
-            <h2>Loading...</h2>
-            <h2>Loading...</h2>
-            <h2>Loading...</h2>
-            <h2>Loading...</h2>
-          </div>     
+          <div className={styles.loading_container}>
+            <div className={styles.loading}>
+              <VscLoading />
+            </div>   
+          </div>  
         )
     }
 
@@ -64,6 +65,7 @@ const Portfolio = (props) => {
       }
     }
 
+    if (user && portfolio) {
       return (
         <div className={styles.container}>
           <div className={styles.row}>
@@ -118,6 +120,7 @@ const Portfolio = (props) => {
             </div>
         </div>
       )
+    }
 }
 
 Portfolio.getInitialProps = ({ query }) => {

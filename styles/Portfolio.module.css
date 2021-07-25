@@ -1,3 +1,17 @@
+.loading_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 93vh;
+    margin-top: 7vh;
+    background-color: #0D1431;
+}
+
+.loading {
+    font-size: 300px;
+    color: white;
+}
+
 .container {
     margin-top: 7vh;
     height: 93vh;
