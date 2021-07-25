@@ -70,12 +70,14 @@
 }
 
 .vote_yes {
+    display: flex;
     background-color: #30bd06;
     border-radius: 40px 0 0 40px;
     height: 100%;
     flex: 1;
-    font-size: 25px;
-    text-align: center;
+    font-size: 40px;
+    align-items: center;
+    justify-content: center;
     color: white;
 }
 
@@ -83,18 +85,44 @@
     cursor: pointer;
 }
 
+.voted_yes {
+    display: flex;
+    background-color: #228803;
+    border-radius: 40px 0 0 40px;
+    height: 100%;
+    flex: 1;
+    font-size: 40px;
+    align-items: center;
+    justify-content: center;
+    color: #4bff14;
+}
+
 .vote_no {
+    display: flex;
     background-color: #de2828;
     border-radius: 0 40px 40px 0;
     height: 100%;
     flex: 1;
-    font-size: 25px;
-    text-align: center;
+    font-size: 40px;
+    align-items: center;
+    justify-content: center;
     color: white;
 }
 
 .vote_no:hover {
     cursor: pointer;
+}
+
+.voted_no {
+    display: flex;
+    background-color: #971414;
+    border-radius: 0 40px 40px 0;
+    height: 100%;
+    flex: 1;
+    font-size: 40px;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 0, 0);
 }
 
 @media screen and (max-width: 1360px) {

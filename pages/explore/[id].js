@@ -5,12 +5,14 @@ import { PieChart } from 'react-minimal-pie-chart';
 import randomColor from 'randomcolor';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { VscLoading } from 'react-icons/vsc'
+import { FaCheck, FaTimes, FaArrowUp, FaArrowDown } from 'react-icons/fa'
 
 const Portfolio = (props) => {
     const [user, loading, error] = useAuthState(firebase.auth())
     const [portfolio, setPortfolio] = useState(null)
     const [upvoted, setUpvoted] = useState(false)
     const [downvoted, setDownvoted] = useState(false)
+    const [getData, setGetData] = useState(true)
 
     var stockList = []
     const color = randomColor({
@@ -43,10 +45,17 @@ const Portfolio = (props) => {
       firebase.firestore().collection('portfolios').doc(props.id).update({
         upvotes: firebase.firestore.FieldValue.arrayUnion(user.uid)
       })
+      firebase.firestore().collection('users').doc(user.uid).update({
+        upvotedPortfolios: firebase.firestore.FieldValue.arrayUnion(props.id)
+      })
       try {
         firebase.firestore().collection('portfolios').doc(props.id).update({
           downvotes: firebase.firestore.FieldValue.arrayRemove(user.uid)
         })
+        firebase.firestore().collection('users').doc(user.uid).update({
+          downvotedPortfolios: firebase.firestore.FieldValue.arrayRemove(props.id)
+        })
+        setGetData(true)
       } catch (error) {
         return
       }   
@@ -56,16 +65,43 @@ const Portfolio = (props) => {
       firebase.firestore().collection('portfolios').doc(props.id).update({
         downvotes: firebase.firestore.FieldValue.arrayUnion(user.uid)
       })
+      firebase.firestore().collection('users').doc(user.uid).update({
+        downvotedPortfolios: firebase.firestore.FieldValue.arrayUnion(props.id)
+      })
       try {
         firebase.firestore().collection('portfolios').doc(props.id).update({
           upvotes: firebase.firestore.FieldValue.arrayRemove(user.uid)
         })
+        firebase.firestore().collection('users').doc(user.uid).update({
+          upvotedPortfolios: firebase.firestore.FieldValue.arrayRemove(props.id)
+        })
+        setGetData(true)
       } catch (error) {
         return
       }
     }
 
     if (user && portfolio) {
+      if (getData) {
+        firebase.firestore()
+          .collection('users')
+          .doc(user.uid)
+          .get()
+          .then(result => {
+            result.data().upvotedPortfolios.map(upvote => {
+              if (upvote === props.id)
+              setUpvoted(true)
+              setDownvoted(false)
+            })
+            result.data().downvotedPortfolios.map(downvote => {
+              if (downvote === props.id)
+              setDownvoted(true)
+              setUpvoted(false)
+            })
+          })
+        setGetData(false)
+      }
+
       return (
         <div className={styles.container}>
           <div className={styles.row}>
@@ -77,12 +113,24 @@ const Portfolio = (props) => {
                   {portfolio.description}
                 </p>
                 <div className={styles.vote_container}>
+                  {upvoted ? 
+                  <div className={styles.voted_yes} onClick={upvote}>
+                    <FaCheck />
+                  </div>
+                  :
                   <div className={styles.vote_yes} onClick={upvote}>
-                    <p>⬆</p>
+                    <FaArrowUp />
                   </div>
+                  }
+                  {downvoted ? 
+                  <div className={styles.voted_no} onClick={downvote}>
+                    <FaTimes />
+                  </div>
+                  :
                   <div className={styles.vote_no} onClick={downvote}>
-                    <p>⬇</p>
+                    <FaArrowDown />
                   </div>
+                  }
                 </div>
               </div>
             </div>
@@ -120,6 +168,63 @@ const Portfolio = (props) => {
             </div>
         </div>
       )
+    }
+
+    if (!user) {
+        return (
+          <div className={styles.container}>
+            <div className={styles.row}>
+              <div className={styles.col}>
+                <div className={styles.info_container}>
+                  <h1 className={styles.title}>{portfolio.title.toUpperCase()}</h1>
+                  <p className={styles.subtitle}>{portfolio.stocks[0].name.toUpperCase()}, {portfolio.stocks[1].name.toUpperCase()}, {portfolio.stocks[2].name.toUpperCase()}...</p>
+                  <p className={styles.description}>
+                    {portfolio.description}
+                  </p>
+                  <div className={styles.vote_container}>
+                    <div className={styles.vote_yes}>
+                      <FaArrowUp />
+                    </div>
+                    <div className={styles.vote_no}>
+                      <FaArrowDown />
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+                {
+                portfolio.stocks.map(stock => {
+                  const temp = {
+                    title: stock.name,
+                    value: stock.percent,
+                    color: color[stockList.length]
+                  }
+                  stockList.push(temp)
+                })
+                }
+  
+                <div className={styles.col}>
+                  <div className={styles.pie_container}>
+                    <PieChart 
+                      data={stockList}
+                      lineWidth={65}
+                      label={({ dataEntry }) => dataEntry.title + " " + dataEntry.value + "%"}
+                      labelStyle={(index) => ({
+                        fill: "#fff",
+                        fontSize: '4px',
+                        fontFamily: 'sans-serif',
+                        fontWeight: "bold"
+                      })}
+                      labelPosition={65}
+                      lengthAngle={360} 
+                      animate
+                      style={{ height: '450px' }}
+                    />
+                  </div>
+                </div>
+              </div>
+          </div>
+        )
     }
 }
 
