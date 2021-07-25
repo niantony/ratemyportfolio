@@ -125,6 +125,14 @@
     color: rgb(255, 0, 0);
 }
 
+.notification {
+    text-transform: uppercase;
+    margin-top: 30px;
+    font-weight: 500;
+    color: #de2828;
+    text-align: center;
+}
+
 @media screen and (max-width: 1360px) {
     .info_container {
         padding-left: 100px;

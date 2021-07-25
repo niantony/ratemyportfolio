@@ -13,6 +13,7 @@ const Portfolio = (props) => {
     const [upvoted, setUpvoted] = useState(false)
     const [downvoted, setDownvoted] = useState(false)
     const [getData, setGetData] = useState(true)
+    const [notification, setNotification] = useState("")
 
     var stockList = []
     const color = randomColor({
@@ -181,17 +182,18 @@ const Portfolio = (props) => {
                   <p className={styles.description}>
                     {portfolio.description}
                   </p>
-                  <div className={styles.vote_container}>
+                  <div className={styles.vote_container} onClick={() => setNotification("Please login to vote")}>
                     <div className={styles.vote_yes}>
                       <FaArrowUp />
                     </div>
-                    <div className={styles.vote_no}>
+                    <div className={styles.vote_no} onClick={() => setNotification("Please login to vote")}>
                       <FaArrowDown />
                     </div>
                   </div>
                 </div>
+                <p className={styles.notification}>{notification}</p>
               </div>
-  
+              
                 {
                 portfolio.stocks.map(stock => {
                   const temp = {
