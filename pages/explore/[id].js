@@ -12,6 +12,8 @@ const Portfolio = (props) => {
     const [portfolio, setPortfolio] = useState(null)
     const [upvoted, setUpvoted] = useState(false)
     const [downvoted, setDownvoted] = useState(false)
+    const [upvotes, setUpvotes] = useState(0)
+    const [downvotes, setDownvotes] = useState(0)
     const [getData, setGetData] = useState(true)
     const [notification, setNotification] = useState("")
 
@@ -29,6 +31,8 @@ const Portfolio = (props) => {
             .get()
             .then(result => {
                 setPortfolio(result.data())
+                setUpvotes(result.data().upvotes.length)
+                setDownvotes(result.data().downvotes.length)
             })
     }, [])
 
@@ -49,6 +53,7 @@ const Portfolio = (props) => {
       firebase.firestore().collection('users').doc(user.uid).update({
         upvotedPortfolios: firebase.firestore.FieldValue.arrayUnion(props.id)
       })
+      setUpvotes(upvotes + 1)
       try {
         firebase.firestore().collection('portfolios').doc(props.id).update({
           downvotes: firebase.firestore.FieldValue.arrayRemove(user.uid)
@@ -56,6 +61,7 @@ const Portfolio = (props) => {
         firebase.firestore().collection('users').doc(user.uid).update({
           downvotedPortfolios: firebase.firestore.FieldValue.arrayRemove(props.id)
         })
+        setDownvotes(downvotes - 1)
         setGetData(true)
       } catch (error) {
         return
@@ -69,6 +75,7 @@ const Portfolio = (props) => {
       firebase.firestore().collection('users').doc(user.uid).update({
         downvotedPortfolios: firebase.firestore.FieldValue.arrayUnion(props.id)
       })
+      setDownvotes(downvotes + 1)
       try {
         firebase.firestore().collection('portfolios').doc(props.id).update({
           upvotes: firebase.firestore.FieldValue.arrayRemove(user.uid)
@@ -76,6 +83,7 @@ const Portfolio = (props) => {
         firebase.firestore().collection('users').doc(user.uid).update({
           upvotedPortfolios: firebase.firestore.FieldValue.arrayRemove(props.id)
         })
+        setUpvotes(upvotes - 1)
         setGetData(true)
       } catch (error) {
         return
@@ -115,21 +123,21 @@ const Portfolio = (props) => {
                 </p>
                 <div className={styles.vote_container}>
                   {upvoted ? 
-                  <div className={styles.voted_yes} onClick={upvote}>
-                    <FaCheck />
+                  <div className={styles.voted_yes}>
+                    <p>{upvotes}</p><FaCheck />
                   </div>
                   :
                   <div className={styles.vote_yes} onClick={upvote}>
-                    <FaArrowUp />
+                    <p>{upvotes}</p><FaArrowUp />
                   </div>
                   }
                   {downvoted ? 
-                  <div className={styles.voted_no} onClick={downvote}>
-                    <FaTimes />
+                  <div className={styles.voted_no}>
+                    <p>{downvotes}</p><FaTimes />
                   </div>
                   :
                   <div className={styles.vote_no} onClick={downvote}>
-                    <FaArrowDown />
+                    <p>{downvotes}</p><FaArrowDown />
                   </div>
                   }
                 </div>
@@ -184,10 +192,10 @@ const Portfolio = (props) => {
                   </p>
                   <div className={styles.vote_container} onClick={() => setNotification("Please login to vote")}>
                     <div className={styles.vote_yes}>
-                      <FaArrowUp />
+                      <p>{upvotes}</p><FaArrowUp />
                     </div>
                     <div className={styles.vote_no} onClick={() => setNotification("Please login to vote")}>
-                      <FaArrowDown />
+                      <p>{downvotes}</p><FaArrowDown />
                     </div>
                   </div>
                 </div>

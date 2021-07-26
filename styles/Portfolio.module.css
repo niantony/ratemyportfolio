@@ -97,6 +97,16 @@
     color: #4bff14;
 }
 
+.vote_yes p {
+    font-size: 50px;
+    padding-right: 5px;
+}
+
+.voted_yes p {
+    font-size: 50px;
+    padding-right: 5px;
+}
+
 .vote_no {
     display: flex;
     background-color: #de2828;
@@ -123,6 +133,16 @@
     align-items: center;
     justify-content: center;
     color: rgb(255, 0, 0);
+}
+
+.vote_no p {
+    font-size: 50px;
+    padding-right: 5px;
+}
+
+.voted_no p {
+    font-size: 50px;
+    padding-right: 5px;
 }
 
 .notification {
