@@ -1,12 +1,21 @@
 .create_container {
     margin-top: 7vh;
     min-height: 93vh;
+    padding-bottom: 10vh;
+    background-color: #0D1431;
 }
 
 .create_container h1 {
     text-align: center;
-    padding-top: 20px;
+    padding-top: 40px;
     font-size: 60px;
+    color: #fff;
+}
+
+.create_container span {
+    background: -webkit-linear-gradient(180deg, rgba(33,84,251,1) 0%, rgba(33,117,251,1) 35%, rgba(100,143,255,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .create_container h2 {
@@ -14,6 +23,7 @@
     font-size: 25px;
     font-weight: 700;
     margin-bottom: 6px;
+    color: rgb(231, 231, 231);
 }
 
 .create_container h4 {
@@ -22,6 +32,7 @@
     font-size: 13px;
     padding-left: 15px;
     padding-bottom: 8px;
+    color: rgb(197, 197, 197);
 }
 
 .container {
@@ -45,7 +56,7 @@
 }
 
 .button {
-    background-color: #30bd06;
+    background-color: #216BFB;
     border: none;
     height: 35px;
     border-radius: 15px;
@@ -56,6 +67,21 @@
 }
 
 .button:hover {
+    cursor: pointer;
+}
+
+.create_button {
+    background: -webkit-linear-gradient(180deg, rgba(33,84,251,1) 0%, rgba(61,135,255,1) 100%);
+    border: none;
+    height: 35px;
+    border-radius: 15px;
+    font-weight: 500;
+    width: 100%;
+    color: white;
+    font-size: 13px;
+}
+
+.create_button:hover {
     cursor: pointer;
 }
 
@@ -70,7 +96,6 @@
 }
 
 .input:focus {
-    border: 1px solid #c2c2c2;
     outline: none;
 }
 
@@ -83,6 +108,10 @@
     padding-left: 15px;
     margin-bottom: 10px;
     resize: none;
+}
+
+.input_desc:focus {
+    outline: none;
 }
 
 .notification {
@@ -100,15 +129,7 @@
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 10px;
-}
-
-.table_container {
-    display: flex;
-    flex-direction: column;
-    border: solid 2px black;
-    border-radius: 20px;
-    margin-left: 40px;
-    overflow-y: hidden;
+    color: rgb(167, 167, 167);
 }
 
 .table {
@@ -116,21 +137,30 @@
 }
 
 .heading {
+    border-radius: 10px 10px 0 0;
+    margin-left: 50px;
     display: flex;
     flex-direction: row;
     padding-bottom: 15px;
+    background-color: #1e55df;
+    color: #fff;
     border-bottom: black solid 2px;
 }
 
 .menu {
+    margin-left: 50px;
+    background-color: #1e48d1;
     display: flex;
     flex-direction: row;
-    margin-top: -5px;
+    margin-top: -15px;
+    margin-bottom: 17px;
     padding-bottom: 15px;
-    border-bottom: black solid 1px;
+    font-weight: 500;
+    color: rgb(231, 226, 226);
 }
 
 .item_one {
+    margin-top: 15px;
     display: flex;
     font-size: 15px;
     font-weight: 500;
@@ -138,6 +168,7 @@
 
 .item_two {
     display: flex;
+    margin-top: 15px;
     padding-left: 40px;
     padding-right: 60px;
     font-size: 15px;
@@ -145,22 +176,21 @@
 }
 
 .item_name {
-    padding-top: 5px;
+    margin-top: 15px;
     display: flex;
-    width: 180px;
+    width: 140px;
     text-transform: uppercase;
     font-size: 13px;
 }
 
 .item_percent {
-    padding-top: 5px;
+    margin-top: 15px;
     display: flex;
-    width: 40px;
-    padding-right: 80px;
+    width: 120px;
 }
 
 .delete_button {
-    margin-top: 5px;
+    margin-top: 15px;
     background-color: #de2828;
     border: none;
     border-radius: 15px;
@@ -188,9 +218,6 @@
     .table_container {
         margin-top: 50px;
     }
-    .item_name {
-        width: 180px;
-    }
     .item_percent {
         padding-right: 80px;
     }
@@ -213,30 +240,19 @@
     .requirements {
         padding-right: 40px;
     }
+}
+
+@media screen and (max-width: 500px) {
     .create_container h1 {
         font-size: 50px;
-        margin-bottom: 20px;
     }
 }
 
 @media screen and (max-width: 450px) {
-    .row {
-        display: flex;
-        flex-direction: column;
+    .heading {
+        margin-right: 20px;
     }
-    .add_container {
-        margin-top: 20px;
-    }
-    .add_container input {
-        width: 250px;
-    }
-    .add_container button {
-        width: 250px;
-    }
-    .requirements {
-        padding-right: 40px;
-    }
-    .table_container {
+    .menu {
         margin-right: 20px;
     }
     .item_one {
@@ -249,17 +265,21 @@
     }
     .item_name {
         font-size: 12px;
-        width: 120px;
+        width: 100px;
     }
     .item_percent {
         font-size: 12px;
-        padding-right: 40px;
+        width: 70px;
     }
     .create_container h1 {
         font-size: 50px;
         margin-bottom: 30px;
+        margin-top: -30px;
     }
     .create_container h2 {
         font-size: 20px;
+    }
+    .delete_button {
+        margin-left: -10px;
     }
 }

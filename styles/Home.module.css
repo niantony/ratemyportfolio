@@ -101,7 +101,6 @@
   background: -webkit-linear-gradient(180deg, rgba(33,84,251,1) 0%, rgba(33,117,251,1) 35%, rgba(100,143,255,1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-size: 200% auto;
 }
 
 .title,

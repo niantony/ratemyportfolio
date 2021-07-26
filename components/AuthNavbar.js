@@ -26,6 +26,11 @@ function AuthNavbar() {
                     </Link>
                 </li>
                 <li className={styles.item} onClick={closeMobileMenu}>
+                    <Link href='/create' className={styles.nav_link}>
+                        Create
+                    </Link>
+                </li>
+                <li className={styles.item} onClick={closeMobileMenu}>
                     <Link href='/about' className={styles.nav_link}>
                         About
                     </Link>

@@ -114,7 +114,7 @@ export default function CreatePortfolio() {
   if (user) {
     return (
       <div className={styles.create_container}>
-        <h1>Create a Portfolio</h1>
+        <h1>Create a <span>Portfolio</span></h1>
           <div className={styles.container}>
             <div className={styles.row}>
               <form className={styles.form} onSubmit={handleSubmit}>
@@ -129,7 +129,7 @@ export default function CreatePortfolio() {
                   <textarea className={styles.input_desc} value={description} placeholder="Description..."
                   onChange={({target}) => setDescription(target.value)} />
                 </div> 
-                <button className={styles.button} type="submit">CREATE PORTFOLIO</button>
+                <button className={styles.create_button} type="submit">CREATE PORTFOLIO</button>
               </form>
   
               <div className={styles.add_container}>
