@@ -16,6 +16,7 @@ const Portfolio = (props) => {
     const [downvotes, setDownvotes] = useState(0)
     const [getData, setGetData] = useState(true)
     const [notification, setNotification] = useState("")
+    const [firstVote, setFirstVote] = useState(false)
 
     var stockList = []
     const color = randomColor({
@@ -61,7 +62,9 @@ const Portfolio = (props) => {
         firebase.firestore().collection('users').doc(user.uid).update({
           downvotedPortfolios: firebase.firestore.FieldValue.arrayRemove(props.id)
         })
-        setDownvotes(downvotes - 1)
+        if (downvoted) {
+          setDownvotes(downvotes - 1)
+        }
         setGetData(true)
       } catch (error) {
         return
@@ -83,7 +86,9 @@ const Portfolio = (props) => {
         firebase.firestore().collection('users').doc(user.uid).update({
           upvotedPortfolios: firebase.firestore.FieldValue.arrayRemove(props.id)
         })
-        setUpvotes(upvotes - 1)
+        if (upvoted) {
+          setUpvotes(upvotes - 1)
+        }
         setGetData(true)
       } catch (error) {
         return
@@ -97,16 +102,20 @@ const Portfolio = (props) => {
           .doc(user.uid)
           .get()
           .then(result => {
-            result.data().upvotedPortfolios.map(upvote => {
-              if (upvote === props.id)
-              setUpvoted(true)
-              setDownvoted(false)
-            })
-            result.data().downvotedPortfolios.map(downvote => {
-              if (downvote === props.id)
-              setDownvoted(true)
-              setUpvoted(false)
-            })
+            try {
+              result.data().upvotedPortfolios.map(upvote => {
+                if (upvote === props.id)
+                setUpvoted(true)
+                setDownvoted(false)
+              })
+              result.data().downvotedPortfolios.map(downvote => {
+                if (downvote === props.id)
+                setDownvoted(true)
+                setUpvoted(false)
+              })
+            } catch (error) {
+              return
+            }
           })
         setGetData(false)
       }
