@@ -1,0 +1,25 @@
+.auth_container {
+    display: flex;
+    background-color: #0D1431;
+    justify-content: center;
+    align-items: center;
+    margin-top: 7vh;
+    height: 93vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 40vh;
+    height: 50vh;
+    border-radius: 1rem;
+    background-color: rgb(55, 99, 194);
+}
+
+.container h1 {
+    text-decoration: underline;
+    margin-top: -20vh;
+    color: #fff;
+}

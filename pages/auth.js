@@ -100,7 +100,7 @@ export default function SignInScreen() {
     }
 
     else return (
-        <div className={styles.auth_container}>
+        <div>
             <Auth />
         </div>
     )
