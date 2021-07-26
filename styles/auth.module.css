@@ -9,6 +9,7 @@
 }
 
 .img {
+    margin-top: -10vh;
     border-radius: 50%;
     width: 130px;
     height: 130px;
@@ -206,6 +207,11 @@
     color: #fff;
     background-color: #233475;
     border: solid 1px #fff;
+}
+
+.no_portfolios {
+  color: #fff;
+  font-size: 18px;
 }
 
 @media screen and (max-width: 1024px) {

@@ -90,7 +90,7 @@ export default function SignInScreen() {
                         )
                     })}</> :
                     <>
-                        You have no portfolios
+                        <p className={styles.no_portfolios}>You have no portfolios</p>
                     </>}
                     
                 </div>
