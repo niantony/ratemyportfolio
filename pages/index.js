@@ -62,6 +62,32 @@ export default function Home() {
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </div>
       </div>
+
+      <div className={styles.container}>
+        <div className={styles.row}>
+          <div className={styles.col}>
+            <h1>Create your own Portfolio!</h1>
+            <h2>You can create and share your own portfolio by logging in and
+              heading over to the <Link href='/create'><span>create page</span></Link>.
+            </h2>
+            <div className={styles.button_container}>
+              <div className={styles.signup}>
+                <Link href='/create'>
+                  Create
+                </Link>
+              </div>
+              <div className={styles.login}>
+                <Link href='/auth'>
+                  Login
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className={styles.col}>
+            <img className={styles.image} src="/create.png"/>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

@@ -56,6 +56,12 @@
   color: #6D6D6D;
 }
 
+.col span {
+  cursor: pointer;
+  color: #1A0DB3;
+  text-decoration: underline;
+}
+
 .button_container {
   display: flex;
   margin-top: 30px;
@@ -76,6 +82,10 @@
   border-radius: 10px;
 }
 
+.signup:hover {
+  background-color: #195fd1;
+}
+
 .login {
   cursor: pointer;
   display: flex;
@@ -89,6 +99,10 @@
   align-items: center;
   border-radius: 10px;
   margin-left: 10px;
+}
+
+.login:hover {
+  color: #1553b6;
 }
 
 .title {
@@ -189,6 +203,7 @@
 .image {
   height: 100%;
   width: 100%;
+  padding-top: 30px;
 }
 
 @media screen and (max-width: 1360px) {
@@ -321,6 +336,7 @@
     margin-top: 5px;
     height: 276px;
     width: 345px;
+    margin-left: 80px;
   }
 }
 

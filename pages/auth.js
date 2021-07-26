@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import styles from '../styles/Auth.module.css'
 import { useEffect, useState } from 'react';
 import Link from 'next/link'
+import { RiLogoutCircleLine } from 'react-icons/ri'
 
 export default function SignInScreen() {
     const [user, loading, error] = useAuthState(firebase.auth())
@@ -94,7 +95,7 @@ export default function SignInScreen() {
                     
                 </div>
 
-                <button className={styles.signout_button} onClick={signOut}>Sign-out</button>
+                <button className={styles.signout_button} onClick={signOut}><span>Sign-out</span> <RiLogoutCircleLine /></button>
             </div>
         )
     }
