@@ -14,6 +14,10 @@ function Navbar() {
             <div className={styles.menu_icon} onClick={handleClick}>
                 <i>{click ? <FaTimes /> : <CgMenuRight />}</i>
             </div>
+            <div className={styles.logo}>
+                <img src={'/logo2.png'}/>
+                <p>RateMyPortfolio</p>
+            </div>
             <ul className={click ? styles.menu_active : styles.menu} onClick={closeMobileMenu}>
                 <li className={styles.item}>
                     <Link href='/' className={styles.nav_link}>
