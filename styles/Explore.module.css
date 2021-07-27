@@ -1,6 +1,7 @@
 .page_container {
   margin-top: 7vh;
   height: 93vh;
+  width: 100vw;
   background-color: #0D1431;
 }
 

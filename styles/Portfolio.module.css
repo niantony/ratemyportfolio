@@ -13,7 +13,8 @@
 }
 
 .container {
-    margin-top: 7vh;
+    width: 100vw;
+    margin-top: 6vh;
     background-color: #0D1431;
 }
 
@@ -70,6 +71,10 @@
     margin-left: 25%;
     margin-right: 25%;
     height: 80px;
+}
+
+.vote_container span {
+    margin-top: 10px;
 }
 
 .vote_yes {
@@ -233,6 +238,9 @@
   }
 
   @media screen and (max-width: 600px) {
+    .vote_container span {
+        font-size: 25px;
+    }
     .info_container {
         padding-left: 100px;
         padding-right: 100px;
@@ -259,7 +267,7 @@
         height: 60px;
     }
     .vote_container p {
-        font-size: 18px;
+        font-size: 30px;
     }
 }
   
@@ -308,7 +316,11 @@
         height: 50px;
     }
     .vote_container p {
-        font-size: 16px;
+        font-size: 20px;
+    }
+    .vote_container span {
+        font-size: 15px;
+        margin-top: 5px;
     }
   }
 
@@ -318,6 +330,10 @@
     }
     .subtitle {
         font-size: 13px;
+    }
+    .col {
+        padding-right: 0;
+        margin-right: 0;
     }
     .pie_container {
         padding-bottom: 450px;

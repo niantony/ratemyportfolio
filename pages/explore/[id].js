@@ -135,20 +135,20 @@ const Portfolio = (props) => {
                   <div className={styles.vote_container}>
                     {upvoted ? 
                     <div className={styles.voted_yes}>
-                      <p>{upvotes}</p><FaCheck />
+                      <p>{upvotes}</p><span><FaCheck /></span>
                     </div>
                     :
                     <div className={styles.vote_yes} onClick={upvote}>
-                      <p>{upvotes}</p><FaArrowUp />
+                      <p>{upvotes}</p><span><FaArrowUp /></span>
                     </div>
                     }
                     {downvoted ? 
                     <div className={styles.voted_no}>
-                      <p>{downvotes}</p><FaTimes />
+                      <p>{downvotes}</p><span><FaTimes /></span>
                     </div>
                     :
                     <div className={styles.vote_no} onClick={downvote}>
-                      <p>{downvotes}</p><FaArrowDown />
+                      <p>{downvotes}</p><span><FaArrowDown /></span>
                     </div>
                     }
                   </div>
@@ -206,10 +206,10 @@ const Portfolio = (props) => {
                     </p>
                     <div className={styles.vote_container} onClick={() => setNotification("Please login to vote")}>
                       <div className={styles.vote_yes}>
-                        <p>{upvotes}</p><FaArrowUp />
+                        <p>{upvotes}</p><span><FaArrowUp /></span>
                       </div>
                       <div className={styles.vote_no} onClick={() => setNotification("Please login to vote")}>
-                        <p>{downvotes}</p><FaArrowDown />
+                        <p>{downvotes}</p><span><FaArrowDown /></span>
                       </div>
                     </div>
                   </div>

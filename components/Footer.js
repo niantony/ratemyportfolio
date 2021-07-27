@@ -30,7 +30,7 @@ function Footer() {
                             </li>
                         </ul>
                     </div>
-                    <div className={styles.navigation}>
+                    <div className={styles.navigation_two}>
                     <p className={styles.heading}>Useful Links</p>
                         <ul className={styles.navigation_items}>
                             <li className={styles.item}>
