@@ -1,8 +1,11 @@
 .create_container {
     margin-top: 7vh;
     min-height: 93vh;
-    padding-bottom: 10vh;
     background-color: #0D1431;
+}
+
+.contain {
+    min-height: 93vh;
 }
 
 .create_container h1 {

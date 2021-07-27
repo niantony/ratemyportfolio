@@ -5,6 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { v4 as uuidv4 } from 'uuid';
 import styles from '../styles/Create.module.css'
 import Auth from '../components/Auth'
+import Footer from '../components/Footer';
 
 export default function CreatePortfolio() {
   const [user, loading, error] = useAuthState(firebase.auth())
@@ -114,6 +115,7 @@ export default function CreatePortfolio() {
   if (user) {
     return (
       <div className={styles.create_container}>
+        <div className={styles.contain}>
         <h1>Create a <span>Portfolio</span></h1>
           <div className={styles.container}>
             <div className={styles.row}>
@@ -179,6 +181,9 @@ export default function CreatePortfolio() {
             : <></>}
           </div>
           <p className={styles.notification}>{notification}</p>
+        </div>
+        
+          <Footer />
       </div>
     )
   } else return (

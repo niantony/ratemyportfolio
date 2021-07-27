@@ -22,11 +22,13 @@
 }
 
 .logo img {
+    cursor: pointer;
     width: 40px;
     height: 40px;
 }
 
 .logo p {
+    cursor: pointer;
     margin: 0;
     margin-top: 5px;
     margin-left: 10px;
@@ -160,7 +162,7 @@
         visibility: hidden;
     }
     .navbar {
-        height: 10vh;
+        height: 70px;
         transition: all .5s ease;
     }
     .menu_active {

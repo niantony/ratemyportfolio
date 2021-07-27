@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
   if (user) {
     return (
       <>
-        <Layout/>
+        <Layout />
         <AuthNavbar />
         <Component {...pageProps} />
       </>
@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
 
   else return (
     <>
-      <Layout/>
+      <Layout />
       <Navbar />
       <Component {...pageProps} />
     </>

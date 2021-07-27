@@ -14,8 +14,11 @@
 
 .container {
     margin-top: 7vh;
-    height: 93vh;
     background-color: #0D1431;
+}
+
+.contain {
+    min-height: 93vh;
 }
 
 .row {

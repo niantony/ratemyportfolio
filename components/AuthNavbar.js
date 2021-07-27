@@ -15,8 +15,12 @@ function AuthNavbar() {
                 <i>{click ? <FaTimes /> : <CgMenuRight />}</i>
             </div>
             <div className={styles.logo}>
-                <img src={'/logo2.png'}/>
-                <p>RateMyPortfolio</p>
+                <Link href='/'>
+                    <img src={'/logo2.png'}/>
+                </Link>
+                <Link href='/'>
+                    <p>RateMyPortfolio</p>
+                </Link>
             </div>
             <ul className={click ? styles.menu_active : styles.menu} onClick={closeMobileMenu}>
                 <li className={styles.item}>

@@ -6,6 +6,7 @@ import randomColor from 'randomcolor';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { VscLoading } from 'react-icons/vsc'
 import { FaCheck, FaTimes, FaArrowUp, FaArrowDown } from 'react-icons/fa'
+import Footer from '../../components/Footer';
 
 const Portfolio = (props) => {
     const [user, loading, error] = useAuthState(firebase.auth())
@@ -122,75 +123,7 @@ const Portfolio = (props) => {
 
       return (
         <div className={styles.container}>
-          <div className={styles.row}>
-            <div className={styles.col}>
-              <div className={styles.info_container}>
-                <h1 className={styles.title}>{portfolio.title.toUpperCase()}</h1>
-                <p className={styles.subtitle}>{portfolio.stocks[0].name.toUpperCase()}, {portfolio.stocks[1].name.toUpperCase()}, {portfolio.stocks[2].name.toUpperCase()}...</p>
-                <p className={styles.description}>
-                  {portfolio.description}
-                </p>
-                <div className={styles.vote_container}>
-                  {upvoted ? 
-                  <div className={styles.voted_yes}>
-                    <p>{upvotes}</p><FaCheck />
-                  </div>
-                  :
-                  <div className={styles.vote_yes} onClick={upvote}>
-                    <p>{upvotes}</p><FaArrowUp />
-                  </div>
-                  }
-                  {downvoted ? 
-                  <div className={styles.voted_no}>
-                    <p>{downvotes}</p><FaTimes />
-                  </div>
-                  :
-                  <div className={styles.vote_no} onClick={downvote}>
-                    <p>{downvotes}</p><FaArrowDown />
-                  </div>
-                  }
-                </div>
-              </div>
-            </div>
-
-              {
-              portfolio.stocks.map(stock => {
-                const temp = {
-                  title: stock.name,
-                  value: stock.percent,
-                  color: color[stockList.length]
-                }
-                stockList.push(temp)
-              })
-              }
-
-              <div className={styles.col}>
-                <div className={styles.pie_container}>
-                  <PieChart 
-                    data={stockList}
-                    lineWidth={65}
-                    label={({ dataEntry }) => dataEntry.title + " " + dataEntry.value + "%"}
-                    labelStyle={(index) => ({
-                      fill: "#fff",
-                      fontSize: '4px',
-                      fontFamily: 'sans-serif',
-                      fontWeight: "bold"
-                    })}
-                    labelPosition={65}
-                    lengthAngle={360} 
-                    animate
-                    style={{ height: '450px' }}
-                  />
-                </div>
-              </div>
-            </div>
-        </div>
-      )
-    }
-
-    if (!user) {
-        return (
-          <div className={styles.container}>
+          <div className={styles.contain}>
             <div className={styles.row}>
               <div className={styles.col}>
                 <div className={styles.info_container}>
@@ -199,18 +132,29 @@ const Portfolio = (props) => {
                   <p className={styles.description}>
                     {portfolio.description}
                   </p>
-                  <div className={styles.vote_container} onClick={() => setNotification("Please login to vote")}>
-                    <div className={styles.vote_yes}>
+                  <div className={styles.vote_container}>
+                    {upvoted ? 
+                    <div className={styles.voted_yes}>
+                      <p>{upvotes}</p><FaCheck />
+                    </div>
+                    :
+                    <div className={styles.vote_yes} onClick={upvote}>
                       <p>{upvotes}</p><FaArrowUp />
                     </div>
-                    <div className={styles.vote_no} onClick={() => setNotification("Please login to vote")}>
+                    }
+                    {downvoted ? 
+                    <div className={styles.voted_no}>
+                      <p>{downvotes}</p><FaTimes />
+                    </div>
+                    :
+                    <div className={styles.vote_no} onClick={downvote}>
                       <p>{downvotes}</p><FaArrowDown />
                     </div>
+                    }
                   </div>
                 </div>
-                <p className={styles.notification}>{notification}</p>
               </div>
-              
+
                 {
                 portfolio.stocks.map(stock => {
                   const temp = {
@@ -221,7 +165,7 @@ const Portfolio = (props) => {
                   stockList.push(temp)
                 })
                 }
-  
+
                 <div className={styles.col}>
                   <div className={styles.pie_container}>
                     <PieChart 
@@ -242,7 +186,70 @@ const Portfolio = (props) => {
                   </div>
                 </div>
               </div>
-          </div>
+            </div>
+          <Footer />
+        </div>
+      )
+    }
+
+    if (!user) {
+        return (
+          <div className={styles.container}>
+            <div className={styles.contain}>
+              <div className={styles.row}>
+                <div className={styles.col}>
+                  <div className={styles.info_container}>
+                    <h1 className={styles.title}>{portfolio.title.toUpperCase()}</h1>
+                    <p className={styles.subtitle}>{portfolio.stocks[0].name.toUpperCase()}, {portfolio.stocks[1].name.toUpperCase()}, {portfolio.stocks[2].name.toUpperCase()}...</p>
+                    <p className={styles.description}>
+                      {portfolio.description}
+                    </p>
+                    <div className={styles.vote_container} onClick={() => setNotification("Please login to vote")}>
+                      <div className={styles.vote_yes}>
+                        <p>{upvotes}</p><FaArrowUp />
+                      </div>
+                      <div className={styles.vote_no} onClick={() => setNotification("Please login to vote")}>
+                        <p>{downvotes}</p><FaArrowDown />
+                      </div>
+                    </div>
+                  </div>
+                  <p className={styles.notification}>{notification}</p>
+                </div>
+                
+                  {
+                  portfolio.stocks.map(stock => {
+                    const temp = {
+                      title: stock.name,
+                      value: stock.percent,
+                      color: color[stockList.length]
+                    }
+                    stockList.push(temp)
+                  })
+                  }
+    
+                  <div className={styles.col}>
+                    <div className={styles.pie_container}>
+                      <PieChart 
+                        data={stockList}
+                        lineWidth={65}
+                        label={({ dataEntry }) => dataEntry.title + " " + dataEntry.value + "%"}
+                        labelStyle={(index) => ({
+                          fill: "#fff",
+                          fontSize: '4px',
+                          fontFamily: 'sans-serif',
+                          fontWeight: "bold"
+                        })}
+                        labelPosition={65}
+                        lengthAngle={360} 
+                        animate
+                        style={{ height: '450px' }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <Footer />
+            </div>
         )
     }
 }

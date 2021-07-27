@@ -4,6 +4,10 @@
   background-color: #0D1431;
 }
 
+.contain {
+  min-height: 93vh;
+}
+
 .title_container {
   background-color: #0D1431;
   text-align: center;

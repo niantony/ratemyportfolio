@@ -224,6 +224,9 @@
   .card_container {
     margin-top: -10px;
   }
+  .container {
+    width: 100vh;
+  }
 }
 
 @media screen and (max-width: 960px) {
