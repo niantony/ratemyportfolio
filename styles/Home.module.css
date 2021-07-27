@@ -2,7 +2,6 @@
   position:relative;
   height: 100vh;
   background-color: #0D1431;
-  width: 100vw;
 }
 
 .main_container {
@@ -149,9 +148,23 @@
   margin-top: 3rem;
 }
 
+.featured {
+  margin: 0;
+  background-color: #0D1431;
+  padding-top: 30px;
+  padding-bottom: 40px;
+}
+
+.featured h1 {
+  text-align: center;
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 50px;
+  color: #fff;
+}
+
 .card_container {
   margin: 0;
-  padding-top: 20px;
   background-color: #0D1431;
   display: flex;
   width: 100%;

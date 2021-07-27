@@ -33,11 +33,6 @@ function Navbar() {
                         Explore
                     </Link>
                 </li>
-                <li className={styles.item} onClick={closeMobileMenu}>
-                    <Link href='/about' className={styles.nav_link}>
-                        About
-                    </Link>
-                </li>
                 <li className={click ? styles.item : styles.item_signup} onClick={closeMobileMenu}>
                     <Link href='/auth' className={styles.nav_link}>
                         Sign Up

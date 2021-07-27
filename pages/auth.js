@@ -54,7 +54,7 @@ export default function SignInScreen() {
                 </div>
                 
                 <div className={styles.card_container}>
-                    {userPortfolios.length > 0 ? <>{userPortfolios.map(portfolio => {
+                    {userPortfolios && userPortfolios.length > 0 ? <>{userPortfolios.map(portfolio => {
                         return (
                             <div className={styles.card}>
                                 <div key={portfolio.portfolioId}>

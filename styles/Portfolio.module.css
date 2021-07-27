@@ -35,7 +35,7 @@
 .info_container {
     padding-top: 12vh;
     padding-left: 200px;
-    padding-right: 100px;
+    padding-right: 80px;
 }
 
 .pie_container {
@@ -45,7 +45,7 @@
 
 .title {
     color: #fff;
-    font-size: 65px;
+    font-size: 50px;
 }
 
 .subtitle {

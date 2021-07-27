@@ -105,14 +105,16 @@ const Portfolio = (props) => {
           .then(result => {
             try {
               result.data().upvotedPortfolios.map(upvote => {
-                if (upvote === props.id)
-                setUpvoted(true)
-                setDownvoted(false)
+                if (upvote === props.id) {
+                  setUpvoted(true)
+                  setDownvoted(false)
+                }
               })
               result.data().downvotedPortfolios.map(downvote => {
-                if (downvote === props.id)
-                setDownvoted(true)
-                setUpvoted(false)
+                if (downvote === props.id) {
+                  setDownvoted(true)
+                  setUpvoted(false)
+                }
               })
             } catch (error) {
               return

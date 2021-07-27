@@ -38,11 +38,6 @@ function AuthNavbar() {
                         Create
                     </Link>
                 </li>
-                <li className={styles.item} onClick={closeMobileMenu}>
-                    <Link href='/about' className={styles.nav_link}>
-                        About
-                    </Link>
-                </li>
                 <li className={click ? styles.item : styles.item_profile} onClick={closeMobileMenu}>
                     <Link href='/auth' className={styles.nav_link}>
                         Profile

@@ -49,18 +49,21 @@ export default function Home() {
         </div>
       </div>
 
-      <div className={styles.card_container}>
-        <div className={styles.card}>
-          <h2>Dividend Growth 🌱</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-        <div className={styles.card}>
-          <h2>Aggressive Tech 💻</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-        <div className={styles.card}>
-          <h2>Biden Portfolio 🔋</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <div className={styles.featured}>
+        <h1>Featured Portfolios</h1>
+        <div className={styles.card_container}>
+          <div className={styles.card}>
+            <h2>Dividend Growth 🌱</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+          <div className={styles.card}>
+            <h2>Aggressive Tech 💻</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+          <div className={styles.card}>
+            <h2>Biden Portfolio 🔋</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
         </div>
       </div>
 
