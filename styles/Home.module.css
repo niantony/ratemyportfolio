@@ -286,7 +286,7 @@
   .image {
     height: 440px;
     width: 550px;
-    margin-top: -40px;
+    margin-top: -80px;
     z-index: 0;
   }
 }
@@ -328,7 +328,7 @@
   }
 }
 
-@media screen and (max-width: 515px) {
+@media screen and (max-width: 540px) {
   .image {
     height: 288px;
     width: 360px;
