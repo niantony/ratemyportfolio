@@ -1,7 +1,8 @@
 .home_container {
+  position:relative;
   height: 100vh;
   background-color: #0D1431;
-  width: 100%;
+  width: 100vw;
 }
 
 .main_container {
@@ -17,8 +18,6 @@
 
 .main {
   margin-top: 10vh;
-  padding: 5rem 0;
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -38,7 +37,6 @@
 
 .col {
   flex: 1;
-  padding-right: 100px;
 }
 
 .col h1 {
@@ -224,8 +222,35 @@
   .card_container {
     margin-top: -10px;
   }
+  .col h1 {
+    margin-left: 120px;
+  }
+  .col h2 {
+    margin-left: 120px;
+  }
+  .button_container {
+    margin-left: 120px;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-height: 1366px) {
+  .card {
+    width: 80%;
+  }
+  .card_container {
+    margin-top: -10px;
+  }
+  .col h1 {
+    margin-left: 120px;
+  }
+  .col h2 {
+    margin-left: 120px;
+  }
+  .button_container {
+    margin-left: 120px;
+  }
   .container {
-    width: 100vh;
+    max-height: 600px;
   }
 }
 
@@ -275,26 +300,28 @@
 }
 
 @media screen and (max-width: 768px) {
-  .container {
-    padding-top: 20px;
-  }
   .image {
-    height: 324px;
-    width: 405px;
+    height: 400px;
+    width: 500px;
+    margin-left: -100px;
+  }
+  .col h1 {
+    margin-left: 90px;
+  }
+  .col h2 {
+    margin-left: 90px;
+  }
+  .button_container {
+    margin-left: 90px;
   }
 }
 
 @media screen and (max-width: 664px) {
   .col h1 {
     font-size: 35px;
-    margin-left: 150px;
   }
   .col h2 {
     font-size: 17px;
-    margin-left: 150px;
-  }
-  .button_container {
-    margin-left: 150px;
   }
   .container {
     padding-top: 0px;
@@ -316,19 +343,40 @@
   .description {
     font-size: 20px;
   }
+  .col h1 {
+    margin-top: 40px;
+    margin-left: 50px;
+  }
+  .col h2 {
+    margin-left: 50px;
+  }
+  .button_container {
+    margin-left: 50px;
+  }
+  .image {
+    margin-top: -62px;
+    margin-left: -60px;
+  }
 }
 
 @media screen and (max-width: 375px) {
   .col h1 {
+    margin-top: 30px;
     font-size: 30px;
+    margin-left: 60px;
   }
   .col h2 {
     font-size: 14px;
+    margin-left: 60px;
   }
   .signup {
     width: 90px;
     height: 43px;
     font-size: 14px;
+  }
+  .button_container {
+    margin-left: 60px;
+    margin-bottom: 40px;
   }
   .login {
     width: 90px;
@@ -336,24 +384,32 @@
     font-size: 14px;
   }
   .image {
-    margin-top: 5px;
-    height: 276px;
-    width: 345px;
-    margin-left: 80px;
+    margin-left: -60px;
+    margin-top: -20px;
+    height: 275px;
+    width: 330px;
+    padding: 0;
   }
 }
 
 @media screen and (max-width: 375px) and (max-height: 667px) {
   .col h1 {
+    margin-top: 30px;
     font-size: 30px;
+    margin-left: 60px;
   }
   .col h2 {
     font-size: 14px;
+    margin-left: 60px;
   }
   .signup {
     width: 90px;
     height: 43px;
     font-size: 14px;
+  }
+  .button_container {
+    margin-left: 60px;
+    margin-bottom: 40px;
   }
   .login {
     width: 90px;
@@ -361,29 +417,31 @@
     font-size: 14px;
   }
   .image {
-    margin-top: 5px;
+    margin-left: -60px;
+    margin-top: -60px;
     height: 230px;
     width: 288px;
+    padding: 0;
   }
 }
 
 @media screen and (max-width: 320px) {
   .title {
-    font-size: 60px;
+    font-size: 35px;
   }
   .description {
-    font-size: 20px;
+    font-size: 14px;
   }
   .col h1 {
-    margin-left: 120px;
+    margin-left: 50px;
     font-size: 24px;
   }
   .col h2 {
-    margin-left: 120px;
+    margin-left: 50px;
     font-size: 12px;
   }
   .button_container {
-    margin-left: 120px;
+    margin-left: 50px;
   }
   .signup {
     width: 81px;
@@ -396,9 +454,22 @@
     font-size: 12px;
   }
   .image {
-    margin-top: -25px;
-    margin-left: 60px;
+    margin-top: -70px;
+    margin-left: -50px;
     height: 207px;
     width: 259px;
+  }
+  .button {
+    padding: 8px 20px;
+    border-radius: 20px;
+    width: 120px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: #4347E2;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 7vh;
   }
 }

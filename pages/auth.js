@@ -5,7 +5,6 @@ import styles from '../styles/Auth.module.css'
 import { useEffect, useState } from 'react';
 import Link from 'next/link'
 import { RiLogoutCircleLine } from 'react-icons/ri'
-import Footer from '../components/Footer';
 
 export default function SignInScreen() {
     const [user, loading, error] = useAuthState(firebase.auth())
@@ -38,67 +37,65 @@ export default function SignInScreen() {
         
         return (
             <div className={styles.auth_container}>
-                <div className={styles.contain}>
-                    <img
-                        src={user.photoURL} 
-                        alt="Google profile pic"
-                        className={styles.img}
-                    />
-                    <div className={styles.tag}>
-                        <p>Member</p>
-                    </div>
-                    <h1 className={styles.display_name}>{user.displayName}</h1>
-                    <p className={styles.email}>{user.email}</p>
+                <img
+                    src={user.photoURL} 
+                    alt="Google profile pic"
+                    className={styles.img}
+                />
+                <div className={styles.tag}>
+                    <p>Member</p>
+                </div>
+                <h1 className={styles.display_name}>{user.displayName}</h1>
+                <p className={styles.email}>{user.email}</p>
 
-                    <div>
-                        <h2 className={styles.heading}>My Portfolios</h2>
-                        <div className={styles.line} />
-                    </div>
-                    
-                    <div className={styles.card_container}>
-                        {userPortfolios.length > 0 ? <>{userPortfolios.map(portfolio => {
-                            return (
-                                <div className={styles.card}>
+                <div>
+                    <h2 className={styles.heading}>My Portfolios</h2>
+                    <div className={styles.line} />
+                </div>
+                
+                <div className={styles.card_container}>
+                    {userPortfolios.length > 0 ? <>{userPortfolios.map(portfolio => {
+                        return (
+                            <div className={styles.card}>
+                                <div key={portfolio.portfolioId}>
+                                    <div>
+                                        <h2>{portfolio.title}</h2>
+                                    </div>
+                                    <div>
+                                        <h4>{portfolio.stocks[0].name.toUpperCase()}, {portfolio.stocks[1].name.toUpperCase()}, {portfolio.stocks[2].name.toUpperCase()}...</h4>
+                                    </div>
+                                    <div>
+                                        <p>{portfolio.description}</p>
+                                    </div>
                                     <div className={styles.button_container}>
-                                            <div className={styles.view_button}>
-                                                <Link href={`/explore/${portfolio.portfolioId}`}>
-                                                    <img src="https://img.icons8.com/ios-glyphs/90/4a90e2/visible--v1.png"/>
-                                                </Link>
-                                            </div>
-                                            <div className={styles.delete_button} onClick={() => {
-                                                firebase.firestore().collection('users').doc(user.uid).update({
-                                                    portfolios: firebase.firestore.FieldValue.arrayRemove(portfolio)
+                                        <div className={styles.view_button}>
+                                            <Link href={`/explore/${portfolio.portfolioId}`}>
+                                                <img src="https://img.icons8.com/ios-glyphs/90/4a90e2/visible--v1.png"/>
+                                            </Link>
+                                        </div>
+                                        <div className={styles.delete_button} onClick={() => {
+                                            firebase.firestore().collection('users').doc(user.uid).update({
+                                                portfolios: firebase.firestore.FieldValue.arrayRemove(portfolio)
+                                            })
+                                            firebase.firestore().collection('portfolios').doc(portfolio.portfolioId)
+                                                .delete().then(() => {
+                                                    setGetData(true)
                                                 })
-                                                firebase.firestore().collection('portfolios').doc(portfolio.portfolioId)
-                                                    .delete().then(() => {
-                                                        setGetData(true)
-                                                    })
-                                                }}>
-                                                <img src="https://img.icons8.com/ios/100/fa314a/delete-trash.png"/>
-                                            </div>
-                                        </div>
-                                    <div key={portfolio.portfolioId}>
-                                        <div>
-                                            <h2>{portfolio.title}</h2>
-                                        </div>
-                                        <div>
-                                            <h4>{portfolio.stocks[0].name.toUpperCase()}, {portfolio.stocks[1].name.toUpperCase()}, {portfolio.stocks[2].name.toUpperCase()}...</h4>
-                                        </div>
-                                        <div>
-                                            <p>{portfolio.description}</p>
+                                            }}>
+                                            <img src="https://img.icons8.com/ios/100/fa314a/delete-trash.png"/>
                                         </div>
                                     </div>
                                 </div>
-                            )
-                        })}</> :
-                        <>
-                            <p className={styles.no_portfolios}>You have no portfolios</p>
-                        </>}
-                        
-                    </div>
-                    <button className={styles.signout_button} onClick={signOut}><span>Sign-out</span> <RiLogoutCircleLine /></button>
+                            </div>
+                        )
+                    })}</> :
+                    <>
+                        <p className={styles.no_portfolios}>You have no portfolios</p>
+                    </>}
+                    
                 </div>
-                <Footer />
+
+                <button className={styles.signout_button} onClick={signOut}><span>Sign-out</span> <RiLogoutCircleLine /></button>
             </div>
         )
     }

@@ -1,269 +1,277 @@
 .auth_container {
-    background-color: #0D1431;
-    height: 100vh;
-}
-
-.contain {
+  background-color: #0D1431;
   position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   justify-content: center;
   align-items: center;
+
 }
 
 .img {
-    margin-top: -10vh;
-    border-radius: 50%;
-    width: 130px;
-    height: 130px;
-    border: 3px solid #fff;
+  margin-top: -10vh;
+  border-radius: 50%;
+  width: 130px;
+  height: 130px;
+  border: 3px solid #fff;
 }
 
 .tag {
-    margin-top: -20px;
-    width: 90px;
-    height: 30px;
-    text-align: center;
-    border: solid 3px #fff;
-    background-color: #B5B1BB;
-    border-radius: 30px;
-    color: #fff
+  margin-top: -20px;
+  width: 90px;
+  height: 30px;
+  text-align: center;
+  border: solid 3px #fff;
+  background-color: #B5B1BB;
+  border-radius: 30px;
+  color: #fff
 }
 
 .tag p {
-    margin: 0;
-    font-weight: 500;
+  margin: 0;
+  font-weight: 500;
 }
 
 .display_name {
-    margin: 0;
-    margin-top: 8px;
-    font-size: 45px;
-    letter-spacing: -1px;   
-    color: #fff;
+  margin: 0;
+  margin-top: 8px;
+  font-size: 45px;
+  letter-spacing: -1px;   
+  color: #fff;
 }
 
 .email {
-    margin: 0;
-    margin-top: 8px;
-    color: #adaab3;
+  margin: 0;
+  margin-top: 8px;
+  color: #adaab3;
 }
 
 .heading {
-    font-size: 30px;
-    margin-top: 50px;
-    color: #fff;
+  font-size: 30px;
+  margin-top: 50px;
+  color: #fff;
 }
 
 .line {
-    margin-top: -25px;
-    margin-bottom: 5px;
-    width: 100%;
-    background-color: #fff;
-    height: 5px;
+  margin-top: -25px;
+  margin-bottom: 5px;
+  width: 100%;
+  background-color: #fff;
+  height: 5px;
 }
 
 .card_container {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  }
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
 .card {
-    position: relative;
-    margin: 1rem;
-    padding: 2rem;
-    text-align: left;
-    background-color: #4347E2;
-    color: #fff;
-    text-decoration: none;
-    border: 1px solid #0D1431;
-    border-radius: 20px;
-    transition: color 0.15s ease, border-color 0.15s ease;
-    width: 30%;
-    height: 190px;
-    overflow: hidden;
-  }
-  
-  .card h2 {
-    margin: 0 0 1rem 0;
-    font-size: 1.5rem;
-  }
+  position: relative;
+  margin: 1rem;
+  padding: 2rem;
+  text-align: left;
+  background-color: #4347E2;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #0D1431;
+  border-radius: 20px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  width: 30%;
+  height: 190px;
+  overflow: hidden;
+}
 
-  .card:hover h2 {
-    filter: blur(2px);
-  }
-  
-  .card h4 {
-    margin: 0;
-    margin-top: -10px;
-    margin-bottom: 6px;
-    color: #808080;
-  }
+.card h2 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+}
 
-  .card:hover h4 {
-    filter: blur(2px);
-  }
+.card:hover h2 {
+  filter: blur(2px);
+}
 
-  .card p {
-    margin: 0;
-    font-size: 1.25rem;
-    line-height: 1.5;
-    color: #0D1431;
-    overflow: hidden;
-  }
+.card h4 {
+  margin: 0;
+  margin-top: -10px;
+  margin-bottom: 6px;
+  color: #808080;
+}
 
-  .card:hover p {
-    filter: blur(2px);
-  }
+.card:hover h4 {
+  filter: blur(2px);
+}
+
+.card p {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: #0D1431;
+  overflow: hidden;
+}
+
+.card:hover p {
+  filter: blur(2px);
+}
 
 .button_container {
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-top: 50px;
-    padding-left: 20%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  margin-top: 50px;
+  margin-left: 15%;
+  justify-content: center;
+  align-items: center;
 }
 
 .view_button {
-  visibility: hidden;
-  border-radius: 15px;
-  border: 2px solid white;
-  width: 90px;
-  height: 90px;
-  margin-right: 10px;
-  background-color: #4A90E2;
+visibility: hidden;
+border-radius: 15px;
+border: 2px solid white;
+width: 90px;
+height: 90px;
+margin-right: 10px;
+background-color: #4A90E2;
 }
 
 .view_button:hover {
-  cursor: pointer;
+cursor: pointer;
 }
 
 .delete_button {
-  visibility: hidden;
-  border-radius: 15px;
-  border: 2px solid white;
-  width: 90px;
-  height: 90px;
-  margin-left: 10px;
-  background-color: #FA314A;
+visibility: hidden;
+border-radius: 15px;
+border: 2px solid white;
+width: 90px;
+height: 90px;
+margin-left: 10px;
+background-color: #FA314A;
 }
 
 .delete_button:hover {
-  cursor: pointer;
+cursor: pointer;
 }
 
 .view_button img {
-  margin-top: 20px;
-  margin-left: 20px;
-  width: 50px;
-  height: 50px;
-  filter: brightness(0) invert(1);
+margin-top: 20px;
+margin-left: 20px;
+width: 50px;
+height: 50px;
+filter: brightness(0) invert(1);
 }
 
 .delete_button img {
-  margin-top: 20px;
-  margin-left: 20px;
-  width: 50px;
-  height: 50px;
-  filter: brightness(0) invert(1);
+margin-top: 20px;
+margin-left: 20px;
+width: 50px;
+height: 50px;
+filter: brightness(0) invert(1);
 }
 
 .card:hover .view_button {
-    transition: .1s ease-in-out;
-    visibility: visible;
-    z-index: 1;
+  transition: .1s ease-in-out;
+  visibility: visible;
+  z-index: 1;
 }
 
 .card:hover .delete_button {
-    visibility: visible;
-    z-index: 1;
-    transition: .1s ease-in-out;
+  visibility: visible;
+  z-index: 1;
+  transition: .1s ease-in-out;
 }
 
 .signout_button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    bottom: 0;
-    color: rgb(207, 207, 207);
-    width: 110px;
-    height: 45px;
-    font-size: 14px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    background-color: #2a3d8d;
-    border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  color: rgb(207, 207, 207);
+  width: 110px;
+  height: 45px;
+  font-size: 14px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  background-color: #2a3d8d;
+  border: none;
 }
 
 .signout_button span {
-  padding-right: 5px;
+padding-right: 5px;
 }
 
 .signout_button:hover {
-    cursor: pointer;
-    color: #fff;
-    background-color: #233475;
-    border: solid 1px #fff;
+  cursor: pointer;
+  color: #fff;
+  background-color: #233475;
+  border: solid 1px #fff;
 }
 
 .no_portfolios {
-  color: #fff;
-  font-size: 18px;
+color: #fff;
+font-size: 18px;
 }
 
 @media screen and (max-width: 1024px) {
-  .card {
-    width: 40%;
-  }
+.card {
+  width: 40%;
+}
 }
 
 @media screen and (max-width: 960px) {
-  .card {
-    width: 40%;
-  }
-  .title {
-    font-size: 80px;
-  }
+.card {
+  width: 40%;
+}
+.title {
+  font-size: 80px;
+}
+}
+
+@media screen and (max-width: 740px) {
   .button_container {
-    margin-top: 60px;
-  }
-  .view_button {
-    display: flex;
-    width: 70px;
-    height: 70px;
-    justify-content: center;
-    align-items: center;
-  }
-  .view_button img {
-    margin: 0;
-    width: 40px;
-    height: 40px;
-  }
-  .delete_button {
-    display: flex;
-    width: 70px;
-    height: 70px;
-    justify-content: center;
-    align-items: center;
-  }
-  .delete_button img {
-    margin: 0;
-    width: 40px;
-    height: 40px;
+    margin-left: 10px;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .card {
-    width: 80%;
-  }
-  .title {
-    font-size: 55px
+.card {
+  width: 80%;
+}
+.title {
+  font-size: 55px
+}
+.button_container {
+  margin-left: 20%;
+}
+
+.img {
+  margin-top: 14vh;
+}
+
+.display_name {
+  margin: 0;
+  margin-top: 8px;
+  font-size: 40px;
+  letter-spacing: -1px;   
+  color: #fff;
+}
+
+.email {
+  margin: 0;
+  margin-top: 8px;
+  color: #adaab3;
+}
+
+.card_container {
+  padding-bottom: 100px;
+}
+}
+
+@media screen and (max-width: 420px) {
+  .button_container {
+    margin-left: 10px;
   }
 }
