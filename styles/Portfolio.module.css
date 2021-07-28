@@ -13,23 +13,31 @@
 }
 
 .container {
-    width: 100vw;
-    margin-top: 6vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 93vh;
+    margin-top: 7vh;
     background-color: #0D1431;
+    width: 100%;
 }
 
 .contain {
-    min-height: 93vh;
+    height: 93vh;
 }
 
 .row {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #0D1431;
 }
 
 .col {
     flex: 1;
+    background-color: #0D1431;
 }
 
 .info_container {
@@ -40,6 +48,7 @@
 
 .pie_container {
     display: flex;
+    width: 100%;
     padding-top: 12vh;
     padding-right: 30vh;
 }
@@ -159,8 +168,16 @@
     text-transform: uppercase;
     margin-top: 30px;
     font-weight: 500;
+    font-size: 20px;
+    color: #4bff14;
+}
+
+.error {
+    text-transform: uppercase;
+    margin-top: 30px;
+    font-weight: 500;
+    font-size: 20px;
     color: #de2828;
-    text-align: center;
 }
 
 @media screen and (max-width: 1360px) {
@@ -190,7 +207,7 @@
         flex-direction: column;
     }
     .info_container {
-        padding-left: 150px;
+        padding-left: 100px;
         padding-right: 150px;
     }
     .pie_container {
@@ -234,9 +251,9 @@
       .pie_container {
         margin-top: -20px;
         padding-bottom: 450px;
-        width: 400px;
+        width: 100%;
         height: 400px;
-    }
+        }
     .vote_container {
         height: 54px;
     }
@@ -251,9 +268,6 @@
     }
     .voted_no {
         width: 90px;
-    }
-    .vote_yes p {
-
     }
   }
 
@@ -303,6 +317,15 @@
     .description {
         font-size: 14px;
     }
+    .contain {
+        padding-bottom: 700px;
+    }
+  }
+
+  @media screen and (max-width: 414px) and (max-height: 736px) {
+      .contain {
+          padding-bottom: 900px;
+      }
   }
 
   @media screen and (max-width: 400px) {
@@ -357,9 +380,4 @@
     .vote_container {
         height: 40px;
     }
-
-  }
-  
-  @media screen and (max-width: 320px) {
-
   }

@@ -2,6 +2,7 @@
     width: 100%;
     height: 300px;
     background-color: #0D1431;
+    padding-bottom: 50px;
 }
 
 .info {
@@ -82,7 +83,10 @@
 @media screen and (max-width: 470px) {
     .navigation_items {
         flex-direction: column;
-        padding-right: 80px;
+        padding-right: 40px;
+    }
+    .navigation_two {
+        margin-left: 60px;
     }
 }
 

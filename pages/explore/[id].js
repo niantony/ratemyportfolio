@@ -17,7 +17,6 @@ const Portfolio = (props) => {
     const [downvotes, setDownvotes] = useState(0)
     const [getData, setGetData] = useState(true)
     const [notification, setNotification] = useState("")
-    const [firstVote, setFirstVote] = useState(false)
 
     var stockList = []
     const color = randomColor({
@@ -56,6 +55,7 @@ const Portfolio = (props) => {
         upvotedPortfolios: firebase.firestore.FieldValue.arrayUnion(props.id)
       })
       setUpvotes(upvotes + 1)
+      setNotification("Vote added!")
       try {
         firebase.firestore().collection('portfolios').doc(props.id).update({
           downvotes: firebase.firestore.FieldValue.arrayRemove(user.uid)
@@ -80,6 +80,7 @@ const Portfolio = (props) => {
         downvotedPortfolios: firebase.firestore.FieldValue.arrayUnion(props.id)
       })
       setDownvotes(downvotes + 1)
+      setNotification("Vote added!")
       try {
         firebase.firestore().collection('portfolios').doc(props.id).update({
           upvotes: firebase.firestore.FieldValue.arrayRemove(user.uid)
@@ -154,6 +155,7 @@ const Portfolio = (props) => {
                     </div>
                     }
                   </div>
+                  <p className={styles.notification}>{notification}</p>
                 </div>
               </div>
 
@@ -183,13 +185,13 @@ const Portfolio = (props) => {
                       labelPosition={65}
                       lengthAngle={360} 
                       animate
-                      style={{ height: '450px' }}
+                      style={{ height: '450px'}}
                     />
                   </div>
                 </div>
               </div>
+              <Footer />
             </div>
-          <Footer />
         </div>
       )
     }
@@ -206,18 +208,18 @@ const Portfolio = (props) => {
                     <p className={styles.description}>
                       {portfolio.description}
                     </p>
-                    <div className={styles.vote_container} onClick={() => setNotification("Please login to vote")}>
-                      <div className={styles.vote_yes}>
+                    <div className={styles.vote_container}>
+                      <div className={styles.vote_yes} onClick={() => setNotification('Please login to vote')}>
                         <p>{upvotes}</p><span><FaArrowUp /></span>
                       </div>
-                      <div className={styles.vote_no} onClick={() => setNotification("Please login to vote")}>
+                      <div className={styles.vote_no} onClick={() => setNotification('Please login to vote')}>
                         <p>{downvotes}</p><span><FaArrowDown /></span>
                       </div>
                     </div>
+                    <p className={styles.error}>{notification}</p>
                   </div>
-                  <p className={styles.notification}>{notification}</p>
                 </div>
-                
+
                   {
                   portfolio.stocks.map(stock => {
                     const temp = {
@@ -228,7 +230,7 @@ const Portfolio = (props) => {
                     stockList.push(temp)
                   })
                   }
-    
+
                   <div className={styles.col}>
                     <div className={styles.pie_container}>
                       <PieChart 
@@ -244,13 +246,13 @@ const Portfolio = (props) => {
                         labelPosition={65}
                         lengthAngle={360} 
                         animate
-                        style={{ height: '450px' }}
+                        style={{ height: '450px'}}
                       />
                     </div>
                   </div>
                 </div>
+                <Footer />
               </div>
-              <Footer />
             </div>
         )
     }
