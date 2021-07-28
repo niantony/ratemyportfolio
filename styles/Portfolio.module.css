@@ -39,6 +39,7 @@
 }
 
 .pie_container {
+    display: flex;
     padding-top: 12vh;
     padding-right: 30vh;
 }
@@ -65,12 +66,9 @@
 .vote_container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
     border-radius: 40px;
-    margin-left: 25%;
-    margin-right: 25%;
-    height: 80px;
+    height: 60px;
+    margin-top: -20px;
 }
 
 .vote_container span {
@@ -80,10 +78,11 @@
 .vote_yes {
     display: flex;
     background-color: #30bd06;
-    border-radius: 40px 0 0 40px;
+    border-radius: 10px;
     height: 100%;
-    flex: 1;
-    font-size: 40px;
+    width: 100px;
+    margin-right: 10px;
+    font-size: 30px;
     align-items: center;
     justify-content: center;
     color: white;
@@ -96,32 +95,34 @@
 .voted_yes {
     display: flex;
     background-color: #228803;
-    border-radius: 40px 0 0 40px;
+    border-radius: 10px;
     height: 100%;
-    flex: 1;
-    font-size: 40px;
+    width: 100px;
+    margin-right: 10px;
+    font-size: 30px;
     align-items: center;
     justify-content: center;
     color: #4bff14;
 }
 
 .vote_yes p {
-    font-size: 50px;
+    font-size: 40px;
     padding-right: 5px;
 }
 
 .voted_yes p {
-    font-size: 50px;
+    font-size: 40px;
     padding-right: 5px;
 }
 
 .vote_no {
     display: flex;
     background-color: #de2828;
-    border-radius: 0 40px 40px 0;
+    border-radius: 10px;
     height: 100%;
-    flex: 1;
-    font-size: 40px;
+    width: 100px;
+    margin-right: 10px;
+    font-size: 30px;
     align-items: center;
     justify-content: center;
     color: white;
@@ -134,22 +135,23 @@
 .voted_no {
     display: flex;
     background-color: #971414;
-    border-radius: 0 40px 40px 0;
+    border-radius: 10px;
     height: 100%;
-    flex: 1;
-    font-size: 40px;
+    width: 100px;
+    margin-right: 10px;
+    font-size: 30px;
     align-items: center;
     justify-content: center;
     color: rgb(255, 0, 0);
 }
 
 .vote_no p {
-    font-size: 50px;
+    font-size: 40px;
     padding-right: 5px;
 }
 
 .voted_no p {
-    font-size: 50px;
+    font-size: 40px;
     padding-right: 5px;
 }
 
@@ -235,6 +237,24 @@
         width: 400px;
         height: 400px;
     }
+    .vote_container {
+        height: 54px;
+    }
+    .vote_yes {
+        width: 90px;
+    }
+    .voted_yes {
+        width: 90px;
+    }
+    .vote_no {
+        width: 90px;
+    }
+    .voted_no {
+        width: 90px;
+    }
+    .vote_yes p {
+
+    }
   }
 
   @media screen and (max-width: 600px) {
@@ -261,10 +281,6 @@
       margin-top: -30px;
       width: 300px;
       height: 300px;
-    }
-    .vote_container {
-        width: 150px;
-        height: 60px;
     }
     .vote_container p {
         font-size: 30px;
@@ -311,10 +327,7 @@
     .description {
         font-size: 13px;
     }
-    .vote_container {
-        width: 130px;
-        height: 50px;
-    }
+
     .vote_container p {
         font-size: 20px;
     }
@@ -342,16 +355,11 @@
         margin-top: -100px;
     }
     .vote_container {
-        margin-left: 60px;
-        width: 130px;
-        height: 50px;
+        height: 40px;
     }
+
   }
   
   @media screen and (max-width: 320px) {
-    .vote_container {
-        margin-left: 30px;
-        width: 130px;
-        height: 50px;
-    }
+
   }
