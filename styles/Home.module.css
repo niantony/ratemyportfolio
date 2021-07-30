@@ -174,10 +174,11 @@
 }
 
 .card {
+  position: relative;
   margin: 1rem;
   padding: 2rem;
   text-align: left;
-  background-color: #4347E2;
+  background-color: #2e52f5;
   color: #fff;
   text-decoration: none;
   border: 1px solid #0D1431;
@@ -192,6 +193,21 @@
   color: #fff;
   border-color: #fff;
   cursor: pointer;
+}
+
+.profile_container {
+  margin: 0;
+  margin-top: 15px;
+  margin-bottom: -10px;
+  display: flex;
+  align-items: center;
+}
+
+.profile_container img {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  margin-right: 10px;
 }
 
 .card h2 {
@@ -215,6 +231,40 @@
   height: 100%;
   width: 100%;
   padding-top: 30px;
+}
+
+.profile_container p {
+  color: rgb(201, 201, 201);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.votes {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  margin-top: 20px;
+  margin-right: 25px;
+  height: 40px;
+  width: 60px;
+  background-color: #2cad05;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.votes p {
+  color: white;
+  font-weight: 500;
+  font-size: 30px;
+}
+
+.vote_image {
+  margin-right: -5px;
+  width: 25px;
+  height: 26px;
+  filter: invert(100%)
 }
 
 @media screen and (max-width: 1360px) {

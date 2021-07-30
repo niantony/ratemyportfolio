@@ -2,8 +2,44 @@ import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import Footer from '../components/Footer'
+import firebase from '../firebase/clientApp'
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+  const [featureOne, setFeatureOne] = useState({})
+  const [featureOneVotes, setFeatureOneVotes] = useState(0)
+  const [featureTwo, setFeatureTwo] = useState({})
+  const [featureTwoVotes, setFeatureTwoVotes] = useState(0)
+  const [featureThree, setFeatureThree] = useState({})
+  const [featureThreeVotes, setFeatureThreeVotes] = useState(0)
+  
+  useEffect(() => {
+    firebase.firestore()
+        .collection('portfolios')
+        .doc("d1242af4-7b1d-4dd6-9136-52a9a503f00d")
+        .get()
+        .then(result => {
+            setFeatureOne(result.data())
+            setFeatureOneVotes(result.data().upvotes.length)
+        })
+    firebase.firestore()
+        .collection('portfolios')
+        .doc("f15c0f76-0d4c-43b0-a8bb-641b8d655536")
+        .get()
+        .then(result => {
+            setFeatureTwo(result.data())
+            setFeatureTwoVotes(result.data().upvotes.length)
+        })
+    firebase.firestore()
+        .collection('portfolios')
+        .doc("c835bf18-be9a-46d0-b36a-f8c5cf8dfa98")
+        .get()
+        .then(result => {
+            setFeatureThree(result.data())
+            setFeatureThreeVotes(result.data().upvotes.length)
+        })
+  }, [])
+
   return (
     <div className={styles.home_container}>
       <div className={styles.main_container}>
@@ -52,18 +88,48 @@ export default function Home() {
       <div className={styles.featured}>
         <h1>Featured Portfolios</h1>
         <div className={styles.card_container}>
-          <div className={styles.card}>
-            <h2>Dividend Growth 🌱</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
-          <div className={styles.card}>
-            <h2>Aggressive Tech 💻</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
-          <div className={styles.card}>
-            <h2>Biden Portfolio 🔋</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
+          <Link href={`/explore/${featureOne.portfolioId}`}>
+            <div className={styles.card}>
+              <div className={styles.votes}>
+                <p>{featureOneVotes}</p>
+                <img className={styles.vote_image} src="https://img.icons8.com/material-rounded/96/000000/thick-arrow-pointing-up.png"/>
+              </div>
+              <h2>{featureOne.title}</h2>
+              <p>{featureOne.description}</p>
+              <div className={styles.profile_container}>
+                <img src={featureOne.photoUrl} alt="Profile pic"/>
+                <p>{featureOne.createdBy}</p>
+              </div>
+            </div>
+          </Link>
+          <Link href={`/explore/${featureTwo.portfolioId}`}>
+            <div className={styles.card}>
+              <div className={styles.votes}>
+                <p>{featureTwoVotes}</p>
+                <img className={styles.vote_image} src="https://img.icons8.com/material-rounded/96/000000/thick-arrow-pointing-up.png"/>
+              </div>
+              <h2>{featureTwo.title}</h2>
+              <p>{featureTwo.description}</p>
+              <div className={styles.profile_container}>
+                <img src={featureTwo.photoUrl} alt="Profile pic"/>
+                <p>{featureTwo.createdBy}</p>
+              </div>
+            </div>
+          </Link>
+          <Link href={`/explore/${featureThree.portfolioId}`}>
+            <div className={styles.card}>
+              <div className={styles.votes}>
+                <p>{featureThreeVotes}</p>
+                <img className={styles.vote_image} src="https://img.icons8.com/material-rounded/96/000000/thick-arrow-pointing-up.png"/>
+              </div>
+              <h2>{featureThree.title}</h2>
+              <p>{featureThree.description}</p>
+              <div className={styles.profile_container}>
+                <img src={featureThree.photoUrl} alt="Profile pic"/>
+                <p>{featureThree.createdBy}</p>
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
 
