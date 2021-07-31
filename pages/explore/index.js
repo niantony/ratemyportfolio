@@ -3,6 +3,7 @@ import Link from 'next/link'
 import firebase from '../../firebase/clientApp'
 import { useState, useEffect } from 'react';
 import Footer from '../../components/Footer';
+import { VscLoading } from 'react-icons/vsc';
 
 const explore = () => {
     const [portfolios, setPortfolios] = useState([])
@@ -19,6 +20,17 @@ const explore = () => {
             setPortfolios(portfolios);
           });
       }, []);
+
+
+    if (!portfolios) {
+        return(
+            <div className={styles.loading_container}>
+                <div className={styles.loading}>
+                    <VscLoading />
+                </div>   
+            </div>  
+        )
+    }
 
     return (
         <div className={styles.page_container}>
