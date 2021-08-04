@@ -1,34 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# RateMyPortfolio
 
-## Getting Started
+## Overview
 
-First, run the development server:
+RateMyPortfolio is a quick and easy way to rate user submitted investment portfolios. You can sign up and create your own portfolios which will be saved to a Firebase database.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+![ratemyport_home](https://user-images.githubusercontent.com/66891025/128181812-8b0a0346-6e68-4d39-acd4-3e6593eaace1.png)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Explore
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Browse user submitted portfolios on the explore page.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+![ratemyport_explore](https://user-images.githubusercontent.com/66891025/128182707-65528bf2-66e0-4fac-910d-0590b42a96de.png)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## View and Rate
 
-## Learn More
+Navigate to a portfolio and rate it by clicking on a portfolio from the explore page.
 
-To learn more about Next.js, take a look at the following resources:
+![ratemyport_portfolio](https://user-images.githubusercontent.com/66891025/128183215-13bf0702-f53f-400f-a207-aa483ca3df1a.png)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Create a Portfolio
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Create your own portfolio by going to the create page. There is validation which will ensure that there are at least five stocks and they add up to 100%. These portfolios will be saved to the Firebase database upon creation.
 
-## Deploy on Vercel
+![ratemyport_create](https://user-images.githubusercontent.com/66891025/128183571-4ede2826-4f4b-4c45-9966-308fc4f91068.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## User Dashboard
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The user dashboard allows users to view and delete their portfolios.
+
+![ratemyport_dash](https://user-images.githubusercontent.com/66891025/128184128-3f84ee53-0779-4694-b864-1898bc117ac8.png)
