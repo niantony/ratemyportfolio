@@ -33,5 +33,11 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Security
 /next.config.js
 /secret.json
+.eslintrc
+.firebaserc
+.firebase.json
+.firestore.indexes.json
+.firestore.rules
