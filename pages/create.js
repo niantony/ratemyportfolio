@@ -161,7 +161,7 @@ export default function CreatePortfolio() {
   
                 {stocks.map(stock => {
                       return (
-                        <div>
+                        <div key={stock.name}>
                           <ul className={styles.menu}>
                             <li className={styles.item_name} key={stock.name}>
                               {stock.name} 

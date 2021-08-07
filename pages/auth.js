@@ -19,6 +19,7 @@ export default function SignInScreen() {
           });
     }
 
+    // Will render dashboard if current user is logged in
     if (user) {
         if(getData) {
             try {
@@ -53,10 +54,11 @@ export default function SignInScreen() {
                     <div className={styles.line} />
                 </div>
                 
+                // Displays current user's portfolios
                 <div className={styles.card_container}>
                     {userPortfolios && userPortfolios.length > 0 ? <>{userPortfolios.map(portfolio => {
                         return (
-                            <div className={styles.card}>
+                            <div key={portfolio.portfolioId} className={styles.card}>
                                 <div key={portfolio.portfolioId}>
                                     <div>
                                         <h2>{portfolio.title}</h2>
@@ -92,14 +94,14 @@ export default function SignInScreen() {
                     <>
                         <p className={styles.no_portfolios}>You have no portfolios</p>
                     </>}
-                    
+                  
                 </div>
-
                 <button className={styles.signout_button} onClick={signOut}><span>Sign-out</span> <RiLogoutCircleLine /></button>
             </div>
         )
     }
 
+    // Show login screen if current user isn't logged in
     else return (
         <div>
             <Auth />

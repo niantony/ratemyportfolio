@@ -18,6 +18,7 @@ const Portfolio = (props) => {
     const [getData, setGetData] = useState(true)
     const [notification, setNotification] = useState("")
 
+    // Generating random blue colors for pie chart
     var stockList = []
     const color = randomColor({
       count: 50,
@@ -25,6 +26,7 @@ const Portfolio = (props) => {
       luminosity: 'bright'
    });
 
+   // Getting the portfolio based on query id
     useEffect(() => {
         firebase.firestore()
             .collection('portfolios')
@@ -37,6 +39,7 @@ const Portfolio = (props) => {
             })
     }, [])
 
+    // Loading Screen
     if (!portfolio) {
         return(
           <div className={styles.loading_container}>
@@ -48,6 +51,7 @@ const Portfolio = (props) => {
     }
 
     const upvote = () => {
+      // Adds upvote
       firebase.firestore().collection('portfolios').doc(props.id).update({
         upvotes: firebase.firestore.FieldValue.arrayUnion(user.uid)
       })
@@ -56,6 +60,8 @@ const Portfolio = (props) => {
       })
       setUpvotes(upvotes + 1)
       setNotification("Vote added!")
+
+      // If user downvoted before, this will remove the downvote
       try {
         firebase.firestore().collection('portfolios').doc(props.id).update({
           downvotes: firebase.firestore.FieldValue.arrayRemove(user.uid)
@@ -73,6 +79,7 @@ const Portfolio = (props) => {
     }
 
     const downvote = () => {
+      // Adds downvote
       firebase.firestore().collection('portfolios').doc(props.id).update({
         downvotes: firebase.firestore.FieldValue.arrayUnion(user.uid)
       })
@@ -81,6 +88,8 @@ const Portfolio = (props) => {
       })
       setDownvotes(downvotes + 1)
       setNotification("Vote added!")
+
+      // If user upvoted before, this will remove the upvote
       try {
         firebase.firestore().collection('portfolios').doc(props.id).update({
           upvotes: firebase.firestore.FieldValue.arrayRemove(user.uid)
@@ -98,6 +107,7 @@ const Portfolio = (props) => {
     }
 
     if (user && portfolio) {
+      // Checks if the current user has upvoted or downvoted already
       if (getData) {
         firebase.firestore()
           .collection('users')
@@ -159,6 +169,7 @@ const Portfolio = (props) => {
                 </div>
               </div>
 
+                // Creating pie chart data
                 {
                 portfolio.stocks.map(stock => {
                   const temp = {
@@ -220,6 +231,7 @@ const Portfolio = (props) => {
                   </div>
                 </div>
 
+                  // Creating pie chart data
                   {
                   portfolio.stocks.map(stock => {
                     const temp = {
@@ -258,6 +270,7 @@ const Portfolio = (props) => {
     }
 }
 
+// Gets the id (portfolio id) from the query
 Portfolio.getInitialProps = ({ query }) => {
     return {
         id: query.id

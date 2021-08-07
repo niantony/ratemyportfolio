@@ -231,6 +231,8 @@
   height: 100%;
   width: 100%;
   padding-top: 30px;
+  padding-right: 50px;
+  margin-left: -50px;
 }
 
 .profile_container p {
@@ -275,6 +277,8 @@
     margin-top: 60px;
     height: 400px;
     width: 500px;
+    padding-right: 0px;
+    margin-left: 0px;
   }
 }
 
