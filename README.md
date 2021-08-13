@@ -4,6 +4,8 @@
 
 [RateMyPortfolio](https://ratemyport.web.app "RateMyPortfolio") is a quick and easy way to rate user submitted investment portfolios. You can sign up and create your own portfolios which will be saved to a Firebase database.
 
+[Visit Website](https://ratemyport.web.app "RateMyPortfolio")
+
 ![ratemyport_home](https://user-images.githubusercontent.com/66891025/128181812-8b0a0346-6e68-4d39-acd4-3e6593eaace1.png)
 
 ## Explore
